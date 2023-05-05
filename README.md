@@ -17,7 +17,7 @@ Verifique se as seguintes opções estão configuradas no seu editor:
 >`git checkout -b <nome-da-branch>`
 
 ### Fazer push no branch após commit
->`git push -u <nome-da-branch>`
+>`git push -u origin <nome-da-branch>`
 
 ### Antes de qualquer pull request fazer
 >`git pull origin master`
@@ -26,6 +26,6 @@ Verifique se as seguintes opções estão configuradas no seu editor:
 
 ### Após merge do seu pull request, para excluir branch localmente:
 >`git pull`\
->`git branch -D <nome-da-branch>`\
+>`git branch -D <nome-da-branch>`
 
 Em seguida o branch deve ser apagado no github caso não vá ser mais utilizado.
