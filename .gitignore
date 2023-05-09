@@ -73,3 +73,7 @@ crashlytics-build.properties
 
 #VS Code
 .vscode
+
+#EXE
+/EXE
+*.rar
