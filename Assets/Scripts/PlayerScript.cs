@@ -14,9 +14,11 @@ public class PlayerScript : MonoBehaviour
   public int maxFuel = 100;
   public int maxHealth = 100;
   int score = 0;
-  private float gameTimer = 0;
+  private float seconds = 0;
+  private int minutes = 0;
   public Image lifeBar;
   public Image fuelBar;
+  public TextMeshProUGUI timeText;
   public TextMeshProUGUI healthText;
   public TextMeshProUGUI fuelText;
   // public TextMeshProUGUI scoreText;
@@ -36,13 +38,14 @@ public class PlayerScript : MonoBehaviour
     health = maxHealth;
     fuel = maxFuel;
     // score = 0;
+    StartCoroutine(UpdateFuel());
     UpdateUI();
   }
 
   private void Update()
   {
     UpdateUI();
-    gameTimer += Time.deltaTime;
+    UpdateTimer();
     Movement();
   }
 
@@ -74,12 +77,32 @@ public class PlayerScript : MonoBehaviour
     transform.position = new Vector3(xValidPosition, yValidPosition, 0f);
   }
 
+  private void UpdateTimer()
+  {
+    seconds += Time.deltaTime;
+    if((int)seconds >= 60) 
+    {
+      seconds -= 60;
+      minutes++;
+    }
+  }
+
+  private IEnumerator UpdateFuel()
+  {
+    while(fuel > 10)
+    {
+        yield return new WaitForSeconds(10);
+        fuel -= 10;
+    }  
+  }
+
   private void UpdateUI()
   {
     lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = health + "/" + maxHealth;
+    healthText.text = "Vida: " + health + "/" + maxHealth;
     fuelBar.fillAmount = (float)fuel / maxFuel;
-    healthText.text = fuel + "/" + maxFuel;
+    fuelText.text = "Gasolina: " + fuel + "/" + maxFuel;
+    timeText.text = "Tempo " + minutes + ":" + ((int)seconds).ToString("00");
     // scoreText.text = "Score: " + ((int)gameTimer + score);
   }
 
