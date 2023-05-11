@@ -480,6 +480,7 @@ MonoBehaviour:
   maxHealth: 100
   lifeBar: {fileID: 577953925}
   fuelBar: {fileID: 295380496}
+  timeText: {fileID: 629005426}
   healthText: {fileID: 1130795055}
   fuelText: {fileID: 726728567}
 --- !u!212 &484571771
