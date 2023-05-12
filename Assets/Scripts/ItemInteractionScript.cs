@@ -22,7 +22,7 @@ public class ItemInteractionScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        Debug.Log("collision happened");
+        // Debug.Log("collision happened");
         if(obj.tag == "Player")
         {
             if(this.tag == "Health") player.Heal(healingAmount);
