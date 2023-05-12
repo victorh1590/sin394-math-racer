@@ -8,7 +8,6 @@ public class PlayerScript : MonoBehaviour
 {
   public float speed = 5;
   public Vector2 screenLimit;
-  //   float shootTimer = 0;
   public int health = 100;
   public int fuel = 100;
   public int maxFuel = 100;
@@ -99,10 +98,10 @@ public class PlayerScript : MonoBehaviour
   private void UpdateUI()
   {
     lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = "Vida: " + health + "/" + maxHealth;
+    healthText.text = "Vida: " + (int)(health / 20);
     fuelBar.fillAmount = (float)fuel / maxFuel;
-    fuelText.text = "Gasolina: " + fuel + "/" + maxFuel;
-    timeText.text = "Tempo " + minutes + ":" + ((int)seconds).ToString("00");
+    fuelText.text = "Gasolina: " + fuel + "%";
+    timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     // scoreText.text = "Score: " + ((int)gameTimer + score);
   }
 
