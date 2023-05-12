@@ -99,10 +99,10 @@ public class PlayerScript : MonoBehaviour
   private void UpdateUI()
   {
     lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = "Vida: " + health + "/" + maxHealth;
+    healthText.text = "Vida: " + health/20 ;
     fuelBar.fillAmount = (float)fuel / maxFuel;
-    fuelText.text = "Gasolina: " + fuel + "/" + maxFuel;
-    timeText.text = "Tempo " + minutes + ":" + ((int)seconds).ToString("00");
+    fuelText.text = "Gasolina: " + fuel + "%";
+    timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     // scoreText.text = "Score: " + ((int)gameTimer + score);
   }
 
