@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8324023643188169637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2667254864112264423}
+  - component: {fileID: 1869748064220802893}
+  m_Layer: 0
+  m_Name: Swarmer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2667254864112264423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324023643188169637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3110538, y: -3.1791842, z: 0.047513526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1869748064220802893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324023643188169637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e288f37adc4f9f74f8173b35728f4e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObstacleList:
+  - {fileID: 78492820656869012, guid: c6285d913f47f6b478c8cf12dd71844b, type: 3}
+  - {fileID: 8202268824010034164, guid: 28372b4577dc24f478caf1ece188bbca, type: 3}
+  - {fileID: 7096688479240242996, guid: fa6149ca19f87514c8240ebc98b00b01, type: 3}
+  ItemList:
+  - {fileID: 1842553810636962044, guid: 415ba55486f58d645bc8150b91633b1d, type: 3}
+  - {fileID: 4354533951327025506, guid: 64751ce8d504c7a42a4f8081c2a08ec0, type: 3}
