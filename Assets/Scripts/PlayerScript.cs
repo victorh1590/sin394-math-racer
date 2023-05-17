@@ -8,7 +8,6 @@ public class PlayerScript : MonoBehaviour
 {
   public float speed = 5;
   public Vector2 screenLimit;
-  //   float shootTimer = 0;
   public int health = 100;
   public int fuel = 100;
   public int maxFuel = 100;
@@ -57,7 +56,7 @@ public class PlayerScript : MonoBehaviour
     var camHeight = cam.orthographicSize;
     var camWidth = cam.orthographicSize * cam.aspect;
 
-    yMin = (camHeight - camHeight) + spriteSize; // lower bound
+    yMin = (-camHeight + 3) + spriteSize; // lower bound - y = -2
     yMax = camHeight - spriteSize; // upper bound
 
     xMin = -camWidth + spriteSize; // left bound
@@ -99,14 +98,14 @@ public class PlayerScript : MonoBehaviour
   private void UpdateUI()
   {
     lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = "Vida: " + health/20 ;
+    healthText.text = "Vida: " + (int)(health / 20);
     fuelBar.fillAmount = (float)fuel / maxFuel;
     fuelText.text = "Gasolina: " + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     // scoreText.text = "Score: " + ((int)gameTimer + score);
   }
 
-  public void TakeDamage(int damage = 1)
+  public void TakeDamage(int damage = 20)
   {
     if (damage < 0) return;
     if (health - damage > 0)
@@ -117,6 +116,34 @@ public class PlayerScript : MonoBehaviour
     {
       health = 0;
       // Die();
+    }
+    UpdateUI();
+  }
+
+  public void Heal(int healingAmount = 20)
+  {
+    if (healingAmount <= 0) return;
+    if(health + healingAmount <= 100)
+    {
+      health += healingAmount;
+    }
+    else
+    {
+      health = 100;
+    }
+    UpdateUI();
+  }
+
+  public void AddGas(int healingAmount = 20)
+  {
+    if (healingAmount <= 0) return;
+    if(fuel + healingAmount <= 100)
+    {
+      fuel += healingAmount;
+    }
+    else
+    {
+      fuel = 100;
     }
     UpdateUI();
   }
