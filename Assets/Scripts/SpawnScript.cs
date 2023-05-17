@@ -10,7 +10,7 @@ public class SpawnScript : MonoBehaviour
     // private GameObject bigSwarmerPrefab;
 
     [SerializeField]
-    private float swarmerInterval = 3.5f;
+    private float swarmerInterval = 2.5f;
     // [SerializeField]
     // private float bigSwarmerInterval = 10.0f;
 
@@ -28,7 +28,7 @@ public class SpawnScript : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         GameObject obstacle = itemsAndObstaclesList[Random.Range(0, itemsAndObstaclesList.Count)];
-        GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(-1, 4), 0f), Quaternion.identity);
+        GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(0, 4), 0f), Quaternion.identity);
         StartCoroutine(SpawnObstacle(interval, itemsAndObstaclesList));
     }
 }
