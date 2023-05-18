@@ -28,7 +28,7 @@ public class SpawnScript : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         GameObject obstacle = itemsAndObstaclesList[Random.Range(0, itemsAndObstaclesList.Count)];
-        GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(0, 4), 0f), Quaternion.identity);
+        GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(-1, 3) + 0.5f, 20f), Quaternion.identity);
         StartCoroutine(SpawnObstacle(interval, itemsAndObstaclesList));
     }
 }
