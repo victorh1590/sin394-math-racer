@@ -73,7 +73,7 @@ public class PlayerScript : MonoBehaviour
     var xValidPosition = Mathf.Clamp(transform.position.x + direction.x, xMin, xMax);
     var yValidPosition = Mathf.Clamp(transform.position.y + direction.y, yMin, yMax);
 
-    transform.position = new Vector3(xValidPosition, yValidPosition, 0f);
+    transform.position = new Vector3(xValidPosition, yValidPosition, 20f);
   }
 
   private void UpdateTimer()

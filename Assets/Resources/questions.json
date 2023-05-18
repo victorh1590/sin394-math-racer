@@ -1,0 +1,13 @@
+[
+  {
+    "Statement": "Quanto é 2+2?",
+    "Answers": [
+      "1",
+      "3",
+      "2",
+      "4"
+    ],
+    "CorrectAnswer": "4",
+    "Tip": "Use a calculadora!"
+  }
+]
