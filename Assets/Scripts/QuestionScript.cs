@@ -53,23 +53,11 @@ public class QuestionScript : MonoBehaviour
   {
     var json = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("original_questions"));
     questionList = new List<Question>(json);
-    Debug.Log(PlayerPrefs.GetString("original_questions"));
   }
 
   void AnswerChosen()
   {
     var positionY = player.transform.position.y;
-    // positionY = (int)Mathf.Floor(positionY);
-    // for (byte i = 0; i < roadCoordsY.Count; i++)
-    // {
-    //   if (positionY == roadCoordsY[i])
-    //   {
-    //     chosenAnswer = i;
-    //     break;
-    //   }
-    // }
-
-
     if(positionY >= -1 && positionY < 0)
     {
         chosenAnswer = 3;
