@@ -6,21 +6,21 @@ using System.IO;
 using TMPro;
 using System.Linq;
 using Newtonsoft.Json;
+using System;
 
 public class QuestionScript : MonoBehaviour
 {
-  List<int> roadCoordsY = new() { 3, 2, 1, 0 };
+  //   List<int> roadCoordsY = new() { 3, 2, 1, 0 };
   List<string> letters = new() { "a)", "b)", "c)", "d)" };
   GameObject player;
-  List<Question> questionList = new();
+  Stack<Question> questionStack = new();
   bool questionOpen = false;
   public TextMeshProUGUI statement;
   public TextMeshProUGUI[] answers = new TextMeshProUGUI[4];
   public TextMeshProUGUI tip;
+  public TextMeshProUGUI timer;
   byte? chosenAnswer;
   Question currentQuestion = new();
-
-
 
   // Start is called before the first frame update
   void Start()
@@ -33,9 +33,9 @@ public class QuestionScript : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Time.realtimeSinceStartup > 5f)
+    if (Time.realtimeSinceStartup > 5f && questionOpen == false && questionStack.Count > 0)
     {
-      StartCoroutine(QuestionProcedure());
+      QuestionProcedure();
     }
   }
 
@@ -51,45 +51,55 @@ public class QuestionScript : MonoBehaviour
 
   void DeserializeJsonFile()
   {
+    var guid = Guid.NewGuid();
     var json = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("original_questions"));
-    questionList = new List<Question>(json);
+    json = json.OrderBy(_ => guid).ToList();
+    json.ForEach(question => question.Answers = question.Answers.OrderBy(_ => guid).ToList());
+    questionStack = new Stack<Question>(json);
+    // questionCount = questionList.Count;
   }
 
   void AnswerChosen()
   {
     var positionY = player.transform.position.y;
-    if(positionY >= -1 && positionY < 0)
+    if (positionY >= -1 && positionY < 0)
     {
-        chosenAnswer = 3;
+      chosenAnswer = 3;
     }
-    else if(positionY >= 0 && positionY < 1)
+    else if (positionY >= 0 && positionY < 1)
     {
-        chosenAnswer = 2;
+      chosenAnswer = 2;
     }
-    else if(positionY >= 1 && positionY < 2)
+    else if (positionY >= 1 && positionY < 2)
     {
-        chosenAnswer = 1;
+      chosenAnswer = 1;
     }
-    else if(positionY >= 2 && positionY < 3)
+    else if (positionY >= 2 && positionY < 3)
     {
-        chosenAnswer = 0;
+      chosenAnswer = 0;
     }
-    else 
+    else
     {
-        chosenAnswer = null;
+      chosenAnswer = null;
     }
     Debug.Log(chosenAnswer);
   }
 
   void SelectQuestion()
   {
-    currentQuestion = questionList[Random.Range(0, questionList.Count)];
-    statement.text = "Pergunta: " +currentQuestion.Statement;
+    // questionCount--;
+    if (questionStack.Count <= 0) throw new Exception("Question stack is empty.");
+    currentQuestion = questionStack.Pop();
+    // currentQuestion.Answers = currentQuestion.Answers.OrderBy(_ => Guid.NewGuid()).ToList();
+    statement.text = "Pergunta: " + currentQuestion.Statement;
+    statement.color = Color.white;
     for (int i = 0; i < answers.Length; i++)
     {
       answers[i].text = letters[i] + " " + currentQuestion.Answers[i];
+      answers[i].color = Color.white;
     }
     tip.text = "Dica: " + currentQuestion.Tip;
+    tip.color = Color.white;
   }
 
   bool QuestionResolution()
@@ -109,16 +119,40 @@ public class QuestionScript : MonoBehaviour
     return chosenAnswer != null ? currentQuestion.CorrectAnswer.Equals(currentQuestion.Answers[(int)chosenAnswer]) : false;
   }
 
-  private IEnumerator QuestionProcedure()
+  private void QuestionProcedure()
   {
     questionOpen = true;
     SelectQuestion();
-    yield return new WaitForSeconds(15);
+    StartCoroutine(Countdown(15, AnswerAndResolution));
+  }
+
+  void AnswerAndResolution()
+  {
     AnswerChosen();
     bool correct = QuestionResolution();
-    yield return new WaitForSeconds(5);
+    StartCoroutine(Countdown(5, ResetQuestionParams));
+  }
+
+  void ResetQuestionParams()
+  {
     questionOpen = false;
     chosenAnswer = null;
-    // currentQuestion = new();
+  }
+
+  IEnumerator Countdown(int seconds, Action action)
+  {
+    int counter = seconds;
+    while (counter > 0)
+    {
+      UpdateTimer(counter);
+      yield return new WaitForSeconds(1);
+      counter--;
+    }
+    action();
+  }
+
+  void UpdateTimer(int counter)
+  {
+    timer.text = "Tempo: " + counter.ToString("00");
   }
 }
