@@ -33,7 +33,7 @@ public class QuestionScript : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Time.realtimeSinceStartup > 5f && questionOpen == false && questionStack.Count > 0)
+    if (Time.realtimeSinceStartup > 5f && questionOpen == false && questionStack?.Count > 0)
     {
       QuestionProcedure();
     }
