@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2401452876141069108}
   m_Layer: 0
   m_Name: Obstacle2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,8 @@ MonoBehaviour:
   background: {fileID: 5366136461357295786, guid: 0af3c037794c07d4697cee476df8f683, type: 3}
   bgRenderer: {fileID: 0}
   bgTransform: {fileID: 0}
+  moveOffset: 0.13325
+  moveFactor: 1
 --- !u!114 &-7586205346188806279
 MonoBehaviour:
   m_ObjectHideFlags: 0

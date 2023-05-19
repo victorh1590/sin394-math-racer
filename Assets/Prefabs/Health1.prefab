@@ -103,6 +103,7 @@ MonoBehaviour:
   background: {fileID: 2940336156883759691, guid: 89a86142eeeca9a49a5f62b7809b0c4c, type: 3}
   bgRenderer: {fileID: 0}
   bgTransform: {fileID: 0}
+  moveOffset: 0.13325
 --- !u!114 &456649168146549591
 MonoBehaviour:
   m_ObjectHideFlags: 0

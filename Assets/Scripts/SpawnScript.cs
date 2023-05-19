@@ -23,6 +23,10 @@ public class SpawnScript : MonoBehaviour
   {
     ItemsAndObstaclesPrefabScript itemsAndObstacles = swarmerPrefab.GetComponent<ItemsAndObstaclesPrefabScript>();
     itemsAndObstaclesList = new(itemsAndObstacles.ObstacleList);
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
     spawnCoroutine = StartCoroutine(SpawnObstacle(swarmerInterval, itemsAndObstaclesList));
   }
@@ -30,7 +34,7 @@ public class SpawnScript : MonoBehaviour
   private IEnumerator SpawnObstacle(float interval, List<GameObject> itemsAndObstaclesList)
   {
     yield return new WaitForSeconds(interval);
-    interval = Random.Range(2f, 4f);
+    interval = Random.Range(0.75f, 1.0f);
     GameObject obstacle = itemsAndObstaclesList[Random.Range(0, itemsAndObstaclesList.Count)];
     GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(-1, 3) + 0.5f, 20f), Quaternion.identity);
     StartCoroutine(SpawnObstacle(interval, itemsAndObstaclesList));
