@@ -215,7 +215,7 @@ RectTransform:
   m_GameObject: {fileID: 34244059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -524,7 +524,7 @@ RectTransform:
   m_GameObject: {fileID: 210191552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 225142809}
   - component: {fileID: 225142811}
   - component: {fileID: 225142810}
+  - component: {fileID: 225142812}
   m_Layer: 5
   m_Name: Answer1
   m_TagString: Untagged
@@ -593,7 +594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: a) Alternativa1
+  m_text: a) Alternativa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -670,6 +671,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225142808}
   m_CullTransparentMesh: 1
+--- !u!114 &225142812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225142808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_EffectDistance: {x: 0, y: 0}
+  m_UseGraphicAlpha: 1
 --- !u!1 &271912777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0887f810e684c4e80448d2c112c3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   screenLimit: {x: 10, y: 5}
   health: 100
   fuel: 100
@@ -1436,7 +1452,7 @@ RectTransform:
   m_GameObject: {fileID: 529144539}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1769,6 +1785,7 @@ GameObject:
   - component: {fileID: 710181913}
   - component: {fileID: 710181915}
   - component: {fileID: 710181914}
+  - component: {fileID: 710181916}
   m_Layer: 5
   m_Name: Answer4
   m_TagString: Untagged
@@ -1893,6 +1910,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710181912}
   m_CullTransparentMesh: 1
+--- !u!114 &710181916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710181912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_EffectDistance: {x: 0, y: 0}
+  m_UseGraphicAlpha: 1
 --- !u!1 &714603059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2148,7 @@ GameObject:
   - component: {fileID: 745176910}
   - component: {fileID: 745176912}
   - component: {fileID: 745176911}
+  - component: {fileID: 745176913}
   m_Layer: 5
   m_Name: Answer3
   m_TagString: Untagged
@@ -2240,6 +2273,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745176909}
   m_CullTransparentMesh: 1
+--- !u!114 &745176913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745176909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_EffectDistance: {x: 0, y: 0}
+  m_UseGraphicAlpha: 1
 --- !u!1 &806123185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,7 +2515,7 @@ RectTransform:
   m_GameObject: {fileID: 858702638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2805,6 +2853,7 @@ GameObject:
   - component: {fileID: 1099228507}
   - component: {fileID: 1099228509}
   - component: {fileID: 1099228508}
+  - component: {fileID: 1099228510}
   m_Layer: 5
   m_Name: Answer2
   m_TagString: Untagged
@@ -2929,6 +2978,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099228506}
   m_CullTransparentMesh: 1
+--- !u!114 &1099228510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099228506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_EffectDistance: {x: 0, y: 0}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1130795053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3220,7 @@ GameObject:
   - component: {fileID: 1191708724}
   m_Layer: 5
   m_Name: Questions
-  m_TagString: Untagged
+  m_TagString: QuestionManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3689,7 +3753,7 @@ GameObject:
   - component: {fileID: 1383616960}
   m_Layer: 0
   m_Name: ObstacleSpawner
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4874,6 +4938,10 @@ PrefabInstance:
     - target: {fileID: 6296384335845832663, guid: 0af3c037794c07d4697cee476df8f683, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296384335845832663, guid: 0af3c037794c07d4697cee476df8f683, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6296384335845832663, guid: 0af3c037794c07d4697cee476df8f683, type: 3}
       propertyPath: m_LocalPosition.x
