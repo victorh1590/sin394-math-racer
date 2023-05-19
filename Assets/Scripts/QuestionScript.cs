@@ -7,7 +7,6 @@ using TMPro;
 using System.Linq;
 using Newtonsoft.Json;
 using System;
-using System.Threading;
 
 public class QuestionScript : MonoBehaviour
 {

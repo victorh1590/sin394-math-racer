@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SpawnScript : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SpawnScript : MonoBehaviour
   private List<GameObject> itemsAndObstaclesList = new();
 
   private Coroutine spawnCoroutine = null;
+
+  private ItemsAndObstaclesPrefabScript itemsAndObstacles;
 
   // Start is called before the first frame update
   void Start()
@@ -38,6 +41,29 @@ public class SpawnScript : MonoBehaviour
     GameObject obstacle = itemsAndObstaclesList[Random.Range(0, itemsAndObstaclesList.Count)];
     GameObject newObstacle = Instantiate(obstacle, new Vector3(9.5f, (float)Random.Range(-1, 3) + 0.5f, 20f), Quaternion.identity);
     StartCoroutine(SpawnObstacle(interval, itemsAndObstaclesList));
+  }
+
+  public void DisableHealingItems()
+  {
+    itemsAndObstaclesList = itemsAndObstaclesList.Except(itemsAndObstacles.ItemList).ToList();
+  }
+
+  public void EnableHealingItems()
+  {
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
+  }
+
+  public void IncreaseObstacles()
+  {
+    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
+  }
+
+  public void DecreaseObstacles()
+  {
+    foreach(var obstacle in itemsAndObstacles.ObstacleList)
+    {
+        itemsAndObstaclesList.Remove(obstacle);
+    }
   }
 
   public void StopSpawn()
