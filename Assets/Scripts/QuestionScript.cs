@@ -170,7 +170,7 @@ public class QuestionScript : MonoBehaviour
     }
     tip.text = "Aguardando próxima pergunta.";
     tip.color = Color.white;
-    timer.text = "Tempo: 00";
+    timer.text = "00";
   }
 
   public void FinishQuestion()
@@ -211,7 +211,7 @@ public class QuestionScript : MonoBehaviour
 
   void UpdateTimer(int counter)
   {
-    timer.text = "Tempo: " + counter.ToString("00");
+    timer.text = counter.ToString("00");
   }
 
 
