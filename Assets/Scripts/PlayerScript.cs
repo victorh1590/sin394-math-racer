@@ -119,8 +119,8 @@ public class PlayerScript : MonoBehaviour
     var camHeight = cam.orthographicSize;
     var camWidth = cam.orthographicSize * cam.aspect;
 
-    yMin = (-camHeight + 3) + spriteSize; // lower bound - y = -2
-    yMax = camHeight - spriteSize; // upper bound
+    yMin = (-camHeight + 3.25f) + spriteSize; // lower bound - y = -2
+    yMax = (camHeight - 1.25f) - spriteSize; // upper bound
 
     xMin = -camWidth + spriteSize; // left bound
     xMax = (camWidth - camWidth) - spriteSize; // right bound 
