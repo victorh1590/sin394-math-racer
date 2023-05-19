@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerScript : MonoBehaviour
   public Image lifeBar;
   public Image fuelBar;
   public TextMeshProUGUI timeText;
+  public TextMeshProUGUI scoreText;
   public TextMeshProUGUI healthText;
   public TextMeshProUGUI fuelText;
   public GameObject questionPanel;
@@ -27,9 +29,8 @@ public class PlayerScript : MonoBehaviour
   // public TextMeshProUGUI scoreText;
   // public TextMeshProUGUI newScoreText;
   //   public GameObject explosion;
-  //   public GameObject menu;
-  //   bool pause = false, dead = false;
-  //   public GameObject pauseMenu;
+  // bool dead = false;
+  public GameObject deathPanel;
   private bool isPaused;
   public GameObject pausePanel;
   public string cena;
@@ -46,8 +47,9 @@ public class PlayerScript : MonoBehaviour
     Time.timeScale = 1f;
     health = maxHealth;
     fuel = maxFuel;
-    // score = 0;
+    score = 0;
     fuelCoroutine = StartCoroutine(UpdateFuel());
+    StartCoroutine(UpdateScore());
     UpdateUI();
   }
 
@@ -155,6 +157,10 @@ public class PlayerScript : MonoBehaviour
     {
       yield return new WaitForSeconds(10);
       fuel -= 10;
+      if(fuel == 0)
+      {
+        Die();
+      }
     }
   }
 
@@ -163,7 +169,6 @@ public class PlayerScript : MonoBehaviour
     if (fuelCoroutine != null)
     {
       StopCoroutine(fuelCoroutine);
-      this.StopAllCoroutines();
       fuelCoroutine = null;
     }
   }
@@ -184,7 +189,7 @@ public class PlayerScript : MonoBehaviour
     fuelBar.fillAmount = (float)fuel / maxFuel;
     fuelText.text = "Gasolina: " + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
-    // scoreText.text = "Score: " + ((int)gameTimer + score);
+    scoreText.text = score.ToString("0000");
   }
 
   public void TakeDamage(int damage = 20)
@@ -197,7 +202,7 @@ public class PlayerScript : MonoBehaviour
     else
     {
       health = 0;
-      // Die();
+      Die();
     }
     UpdateUI();
   }
@@ -230,9 +235,7 @@ public class PlayerScript : MonoBehaviour
     UpdateUI();
   }
 
-  private void AddScore(int value = 20) => score += value;
-
-
+  public void AddScore(int value = 10) => score += value;
 
   private void Die()
   {
@@ -251,6 +254,16 @@ public class PlayerScript : MonoBehaviour
     //   newScoreText.text = "Sua Pontuação: " + newScore.ToString() + "\nPontuação Máxima: " + PlayerPrefs.GetInt("Score");
     // }
     // menu.SetActive(true);
-    // Time.timeScale = 0;
+    Time.timeScale = 0;
+    deathPanel.SetActive(true);
+  }
+
+  private IEnumerator UpdateScore()
+  {
+    while(true)
+    {
+      yield return new WaitForSeconds(10);
+      AddScore(10);
+    }
   }
 }

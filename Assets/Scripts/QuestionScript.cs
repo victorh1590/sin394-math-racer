@@ -185,6 +185,7 @@ public class QuestionScript : MonoBehaviour
     ResetQuestionUI();
     Debug.Log("Correct? " + isCorrect.ToString());
     HealLogic((bool)isCorrect!);
+    QuestionScore((bool)isCorrect!);
     ResetParams();
     spawnScript.RestartSpawn();
     playerScript.RestartUpdateFuel();
@@ -229,6 +230,14 @@ public class QuestionScript : MonoBehaviour
     {
       if (itemTag == "Health") playerScript.Heal((int)healingAmount!);
       else if (itemTag == "Fuel") playerScript.AddGas((int)healingAmount!);
+    }
+  }
+
+  public void QuestionScore(bool correct)
+  {
+    if (correct)
+    {
+      playerScript.AddScore(100);
     }
   }
 }
