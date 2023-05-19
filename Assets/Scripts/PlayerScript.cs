@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class PlayerScript : MonoBehaviour
   //   public GameObject menu;
   //   bool pause = false, dead = false;
   //   public GameObject pauseMenu;
+    private bool isPaused;
+    public GameObject pausePanel;
+    public string cena;
 
   // Start is called before the first frame update
 
@@ -36,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 
   private void Start()
   {
+    Time.timeScale = 1f;
     health = maxHealth;
     fuel = maxFuel;
     // score = 0;
@@ -45,10 +50,33 @@ public class PlayerScript : MonoBehaviour
 
   private void Update()
   {
-    UpdateUI();
-    UpdateTimer();
-    Movement();
+    if (!isPaused){
+        UpdateUI();
+        UpdateTimer();
+        Movement();
+    }
+
+    if(Input.GetKeyDown(KeyCode.Escape)){
+        PauseScreen();    
+    }
   }
+
+    void PauseScreen() { 
+        if (isPaused){
+            isPaused = false;
+            Time.timeScale = 1f;
+            pausePanel.SetActive(false);
+        }
+        else {
+            isPaused = true;
+            Time.timeScale = 0f;
+            pausePanel.SetActive(true);
+        }
+    }
+
+    public void BackToMenu(){
+        SceneManager.LoadScene(cena);
+    }
 
   private void Movement()
   {
@@ -171,6 +199,8 @@ public class PlayerScript : MonoBehaviour
 
   private void AddScore(int value = 20) => score += value;
 
+
+  
   private void Die()
   {
     // dead = true;

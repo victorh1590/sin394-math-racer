@@ -20,6 +20,8 @@ public class QuestionScript : MonoBehaviour
   public TextMeshProUGUI[] answers = new TextMeshProUGUI[4];
   public TextMeshProUGUI tip;
   public TextMeshProUGUI timer;
+  public GameObject questionPanel;
+  public GameObject arrows;
   byte? chosenAnswer;
   Question currentQuestion = new();
   bool? isCorrect = null;
@@ -28,6 +30,7 @@ public class QuestionScript : MonoBehaviour
   int? healingAmount = null;
   private SpawnScript spawnScript = null;
   private PlayerScript playerScript = null;
+
 
   // Start is called before the first frame update
   void Start()
@@ -134,6 +137,8 @@ public class QuestionScript : MonoBehaviour
   {
     if (questionOpen == false && questionStack?.Count > 0)
     {
+      questionPanel.SetActive(true);
+      arrows.SetActive(true);
       itemTag = tag;
       healingAmount = healing;
       spawnScript.StopSpawn();
@@ -171,7 +176,7 @@ public class QuestionScript : MonoBehaviour
     }
     tip.text = "Aguardando próxima pergunta.";
     tip.color = Color.white;
-    timer.text = "Tempo: 00";
+    timer.text = "00";
   }
 
   public void FinishQuestion()
@@ -183,6 +188,8 @@ public class QuestionScript : MonoBehaviour
     ResetParams();
     spawnScript.RestartSpawn();
     playerScript.RestartUpdateFuel();
+    questionPanel.SetActive(false);
+    arrows.SetActive(false);
   }
 
   IEnumerator QuestionCountdown(int seconds, Action action)
@@ -212,7 +219,7 @@ public class QuestionScript : MonoBehaviour
 
   void UpdateTimer(int counter)
   {
-    timer.text = "Tempo: " + counter.ToString("00");
+    timer.text = counter.ToString("00");
   }
 
 
