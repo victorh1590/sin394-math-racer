@@ -32,12 +32,14 @@ public class PlayerScript : MonoBehaviour
   private float xMin, xMax;
   private float yMin, yMax;
 
+  private Coroutine fuelCoroutine = null;
+
   private void Start()
   {
     health = maxHealth;
     fuel = maxFuel;
     // score = 0;
-    StartCoroutine(UpdateFuel());
+    fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
   }
 
@@ -79,20 +81,39 @@ public class PlayerScript : MonoBehaviour
   private void UpdateTimer()
   {
     seconds += Time.deltaTime;
-    if((int)seconds >= 60) 
+    if ((int)seconds >= 60)
     {
       seconds -= 60;
       minutes++;
     }
   }
 
-  private IEnumerator UpdateFuel()
+  public IEnumerator UpdateFuel()
   {
-    while(fuel > 10)
+    while (fuel > 10)
     {
-        yield return new WaitForSeconds(10);
-        fuel -= 10;
-    }  
+      yield return new WaitForSeconds(10);
+      fuel -= 10;
+    }
+  }
+
+  public void StopUpdateFuel()
+  {
+    if (fuelCoroutine != null)
+    {
+      StopCoroutine(fuelCoroutine);
+      this.StopAllCoroutines();
+      fuelCoroutine = null;
+    }
+  }
+
+  public void RestartUpdateFuel()
+  {
+    if (fuelCoroutine != null)
+    {
+      StopUpdateFuel();
+    }
+    fuelCoroutine = StartCoroutine(UpdateFuel());
   }
 
   private void UpdateUI()
@@ -123,7 +144,7 @@ public class PlayerScript : MonoBehaviour
   public void Heal(int healingAmount = 20)
   {
     if (healingAmount <= 0) return;
-    if(health + healingAmount <= 100)
+    if (health + healingAmount <= 100)
     {
       health += healingAmount;
     }
@@ -137,7 +158,7 @@ public class PlayerScript : MonoBehaviour
   public void AddGas(int healingAmount = 20)
   {
     if (healingAmount <= 0) return;
-    if(fuel + healingAmount <= 100)
+    if (fuel + healingAmount <= 100)
     {
       fuel += healingAmount;
     }

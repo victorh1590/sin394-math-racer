@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Health
   - Fuel
+  - Obstacle
+  - QuestionManager
+  - Spawn
   layers:
   - Default
   - TransparentFX
