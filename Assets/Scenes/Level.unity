@@ -776,7 +776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &271912778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1564,6 +1564,8 @@ MonoBehaviour:
   timeText: {fileID: 629005426}
   healthText: {fileID: 1130795055}
   fuelText: {fileID: 726728567}
+  questionPanel: {fileID: 271912777}
+  questions: {fileID: 1191708719}
   pausePanel: {fileID: 1200042199}
   cena: MenuScene
 --- !u!212 &484571771
@@ -2970,7 +2972,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 80ac4b10757ea804fadac003a26e22c7, type: 3}
   m_Color: {r: 1, g: 0.78039217, b: 0, a: 1}
   m_FlipX: 0
@@ -7211,7 +7213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: a415fb3fe1567364ca0db120082217cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

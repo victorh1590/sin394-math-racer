@@ -14,7 +14,8 @@ public class QuestionScript : MonoBehaviour
   List<string> letters = new() { "a)", "b)", "c)", "d)" };
   GameObject player;
   Stack<Question> questionStack = new();
-  bool questionOpen = false;
+  [NonSerialized]
+  public bool questionOpen = false;
   public TextMeshProUGUI statement;
   public TextMeshProUGUI[] answers = new TextMeshProUGUI[4];
   public TextMeshProUGUI tip;

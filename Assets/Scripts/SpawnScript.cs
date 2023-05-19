@@ -21,16 +21,22 @@ public class SpawnScript : MonoBehaviour
 
   private ItemsAndObstaclesPrefabScript itemsAndObstacles;
 
+  private GameObject heart;
+
+  private GameObject fuel;
+
   // Start is called before the first frame update
   void Start()
   {
     ItemsAndObstaclesPrefabScript itemsAndObstacles = swarmerPrefab.GetComponent<ItemsAndObstaclesPrefabScript>();
+    heart = itemsAndObstacles.ItemList.Where(obj => obj.tag == "Health").First();
+    fuel = itemsAndObstacles.ItemList.Where(obj => obj.tag == "Fuel").First();
     itemsAndObstaclesList = new(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
-    itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
+    // itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
     spawnCoroutine = StartCoroutine(SpawnObstacle(swarmerInterval, itemsAndObstaclesList));
   }
 
@@ -51,6 +57,32 @@ public class SpawnScript : MonoBehaviour
   public void EnableHealingItems()
   {
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
+  }
+
+  public void AddHeart()
+  {
+    if(!itemsAndObstaclesList.Contains(heart)) 
+    {
+      itemsAndObstaclesList.Add(heart);
+    }
+  }
+
+  public void RemoveHeart()
+  {
+    itemsAndObstaclesList.RemoveAll(obj => obj.Equals(heart));
+  }
+
+  public void AddFuel()
+  {
+    if(!itemsAndObstaclesList.Contains(fuel)) 
+    {
+      itemsAndObstaclesList.Add(fuel);
+    }
+  }
+
+  public void RemoveFuel()
+  {
+    itemsAndObstaclesList.RemoveAll(obj => obj.Equals(fuel));
   }
 
   public void IncreaseObstacles()

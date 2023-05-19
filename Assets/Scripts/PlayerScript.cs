@@ -21,15 +21,18 @@ public class PlayerScript : MonoBehaviour
   public TextMeshProUGUI timeText;
   public TextMeshProUGUI healthText;
   public TextMeshProUGUI fuelText;
+  public GameObject questionPanel;
+  public GameObject questions;
+  public GameObject spawn;
   // public TextMeshProUGUI scoreText;
   // public TextMeshProUGUI newScoreText;
   //   public GameObject explosion;
   //   public GameObject menu;
   //   bool pause = false, dead = false;
   //   public GameObject pauseMenu;
-    private bool isPaused;
-    public GameObject pausePanel;
-    public string cena;
+  private bool isPaused;
+  public GameObject pausePanel;
+  public string cena;
 
   // Start is called before the first frame update
 
@@ -50,33 +53,63 @@ public class PlayerScript : MonoBehaviour
 
   private void Update()
   {
-    if (!isPaused){
-        UpdateUI();
-        UpdateTimer();
-        Movement();
+    if (!isPaused)
+    {
+      UpdateItemRatio();
+      UpdateUI();
+      UpdateTimer();
+      Movement();
     }
 
-    if(Input.GetKeyDown(KeyCode.Escape)){
-        PauseScreen();    
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      PauseScreen();
     }
   }
 
-    void PauseScreen() { 
-        if (isPaused){
-            isPaused = false;
-            Time.timeScale = 1f;
-            pausePanel.SetActive(false);
-        }
-        else {
-            isPaused = true;
-            Time.timeScale = 0f;
-            pausePanel.SetActive(true);
-        }
+  private void UpdateItemRatio()
+  {
+    SpawnScript script = spawn.GetComponent<SpawnScript>();
+    if (health == maxHealth)
+    {
+      script.RemoveHeart();
     }
+    else 
+    {
+      script.AddHeart();
+    }
+    if (fuel == maxFuel)
+    {
+      script.RemoveFuel();
+    }
+    else
+    {
+      script.AddFuel();
+    }
+  }
 
-    public void BackToMenu(){
-        SceneManager.LoadScene(cena);
+  void PauseScreen()
+  {
+    if (isPaused)
+    {
+      isPaused = false;
+      Time.timeScale = 1f;
+      pausePanel.SetActive(false);
+      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
     }
+    else
+    {
+      isPaused = true;
+      Time.timeScale = 0f;
+      pausePanel.SetActive(true);
+      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(false);
+    }
+  }
+
+  public void BackToMenu()
+  {
+    SceneManager.LoadScene(cena);
+  }
 
   private void Movement()
   {
@@ -200,7 +233,7 @@ public class PlayerScript : MonoBehaviour
   private void AddScore(int value = 20) => score += value;
 
 
-  
+
   private void Die()
   {
     // dead = true;
