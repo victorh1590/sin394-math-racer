@@ -35,7 +35,7 @@ public class SpawnScript : MonoBehaviour
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
-    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
+    // itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     // itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
     spawnCoroutine = StartCoroutine(SpawnObstacle(swarmerInterval, itemsAndObstaclesList));
   }

@@ -56,8 +56,8 @@ public class QuestionScript : MonoBehaviour
   {
     var path = Path.Combine(Application.dataPath, "Resources", "questions.json");
     var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
-    Debug.Log(path);
-    Debug.Log(content);
+    // Debug.Log(path);
+    // Debug.Log(content);
     PlayerPrefs.SetString("original_questions", content);
     PlayerPrefs.Save();
   }
@@ -92,7 +92,7 @@ public class QuestionScript : MonoBehaviour
     {
       chosenAnswer = null;
     }
-    Debug.Log(chosenAnswer);
+    // Debug.Log(chosenAnswer);
   }
 
   void SelectQuestion()
@@ -146,7 +146,7 @@ public class QuestionScript : MonoBehaviour
       questionOpen = true;
       isCorrect = null;
       SelectQuestion();
-      Debug.Log("Is here.1");
+      // Debug.Log("Is here.1");
       yield return StartCoroutine(QuestionCountdown(15, AnswerAndResolution));
     }
   }
@@ -181,9 +181,9 @@ public class QuestionScript : MonoBehaviour
 
   public void FinishQuestion()
   {
-    Debug.Log("Is here.3");
+    // Debug.Log("Is here.3");
     ResetQuestionUI();
-    Debug.Log("Correct? " + isCorrect.ToString());
+    // Debug.Log("Correct? " + isCorrect.ToString());
     HealLogic((bool)isCorrect!);
     QuestionScore((bool)isCorrect!);
     ResetParams();
