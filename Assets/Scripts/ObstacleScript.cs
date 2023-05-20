@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
   ScrollingBackgroundScript bgScript;
+  ScrollingBackgroundScript roadScript;
 
   [SerializeField]
   GameObject background;
@@ -13,6 +14,9 @@ public class ObstacleScript : MonoBehaviour
   Renderer bgRenderer;
   [SerializeField]
   Transform bgTransform;
+  public float moveOffset = 0.1329f;
+  public float moveFactor = 1f;
+
 
   // Start is called before the first frame update
   void Start()
@@ -20,6 +24,7 @@ public class ObstacleScript : MonoBehaviour
     bgScript = GameObject.Find("Background").GetComponent<ScrollingBackgroundScript>();
     bgRenderer = GameObject.Find("Background").GetComponent<Renderer>();
     bgTransform = GameObject.Find("Background").GetComponent<Transform>();
+    roadScript = GameObject.Find("Pista1").GetComponent<ScrollingBackgroundScript>();
   }
 
   // Update is called once per frame
@@ -30,7 +35,7 @@ public class ObstacleScript : MonoBehaviour
 
   private void Movement()
   {
-    transform.Translate(Vector3.left * bgTransform.localScale.x * bgScript.speed * Time.deltaTime);
+    transform.Translate(Vector3.left * bgTransform.localScale.x * (roadScript.speed - (moveFactor * moveOffset)) * Time.deltaTime);
     if (transform.position.x < -10f) DestroyObstacle();
   }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -19,17 +20,20 @@ public class PlayerScript : MonoBehaviour
   public Image lifeBar;
   public Image fuelBar;
   public TextMeshProUGUI timeText;
+  public TextMeshProUGUI scoreText;
   public TextMeshProUGUI healthText;
   public TextMeshProUGUI fuelText;
+  public GameObject questionPanel;
+  public GameObject questions;
+  public GameObject spawn;
   // public TextMeshProUGUI scoreText;
   // public TextMeshProUGUI newScoreText;
   //   public GameObject explosion;
-  //   public GameObject menu;
-  //   bool pause = false, dead = false;
-  //   public GameObject pauseMenu;
-    private bool isPaused;
-    public GameObject pausePanel;
-    public string cena;
+  // bool dead = false;
+  public GameObject deathPanel;
+  private bool isPaused;
+  public GameObject pausePanel;
+  public string cena;
 
   // Start is called before the first frame update
 
@@ -43,40 +47,73 @@ public class PlayerScript : MonoBehaviour
     Time.timeScale = 1f;
     health = maxHealth;
     fuel = maxFuel;
-    // score = 0;
+    score = 0;
     fuelCoroutine = StartCoroutine(UpdateFuel());
+    StartCoroutine(UpdateScore());
     UpdateUI();
   }
 
   private void Update()
   {
-    if (!isPaused){
-        UpdateUI();
-        UpdateTimer();
-        Movement();
+    if (!isPaused)
+    {
+      UpdateItemRatio();
+      UpdateUI();
+      UpdateTimer();
+      Movement();
     }
 
-    if(Input.GetKeyDown(KeyCode.Escape)){
-        PauseScreen();    
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      PauseScreen();
     }
   }
 
-    void PauseScreen() { 
-        if (isPaused){
-            isPaused = false;
-            Time.timeScale = 1f;
-            pausePanel.SetActive(false);
-        }
-        else {
-            isPaused = true;
-            Time.timeScale = 0f;
-            pausePanel.SetActive(true);
-        }
+  private void UpdateItemRatio()
+  {
+    SpawnScript script = spawn.GetComponent<SpawnScript>();
+    if (health == maxHealth)
+    {
+      script.RemoveHeart();
     }
+    else 
+    {
+      script.AddHeart();
+    }
+    if (fuel == maxFuel)
+    {
+      script.RemoveFuel();
+    }
+    else
+    {
+      script.AddFuel();
+    }
+  }
 
-    public void BackToMenu(){
-        SceneManager.LoadScene(cena);
+  void PauseScreen()
+  {
+    if (isPaused)
+    {
+      isPaused = false;
+      Time.timeScale = 1f;
+      pausePanel.SetActive(false);
+      // this.GetComponent<AudioSource>().Pause();
+      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
     }
+    else
+    {
+      isPaused = true;
+      Time.timeScale = 0f;
+      pausePanel.SetActive(true);
+      // this.GetComponent<AudioSource>().UnPause();
+      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(false);
+    }
+  }
+
+  public void BackToMenu()
+  {
+    SceneManager.LoadScene(cena);
+  }
 
   private void Movement()
   {
@@ -86,8 +123,8 @@ public class PlayerScript : MonoBehaviour
     var camHeight = cam.orthographicSize;
     var camWidth = cam.orthographicSize * cam.aspect;
 
-    yMin = (-camHeight + 3) + spriteSize; // lower bound - y = -2
-    yMax = camHeight - spriteSize; // upper bound
+    yMin = (-camHeight + 3.25f) + spriteSize; // lower bound - y = -2
+    yMax = (camHeight - 1.25f) - spriteSize; // upper bound
 
     xMin = -camWidth + spriteSize; // left bound
     xMax = (camWidth - camWidth) - spriteSize; // right bound 
@@ -122,6 +159,10 @@ public class PlayerScript : MonoBehaviour
     {
       yield return new WaitForSeconds(10);
       fuel -= 10;
+      if(fuel == 0)
+      {
+        Die();
+      }
     }
   }
 
@@ -130,7 +171,6 @@ public class PlayerScript : MonoBehaviour
     if (fuelCoroutine != null)
     {
       StopCoroutine(fuelCoroutine);
-      this.StopAllCoroutines();
       fuelCoroutine = null;
     }
   }
@@ -151,7 +191,7 @@ public class PlayerScript : MonoBehaviour
     fuelBar.fillAmount = (float)fuel / maxFuel;
     fuelText.text = "Gasolina: " + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
-    // scoreText.text = "Score: " + ((int)gameTimer + score);
+    scoreText.text = score.ToString("0000");
   }
 
   public void TakeDamage(int damage = 20)
@@ -164,7 +204,7 @@ public class PlayerScript : MonoBehaviour
     else
     {
       health = 0;
-      // Die();
+      Die();
     }
     UpdateUI();
   }
@@ -197,10 +237,8 @@ public class PlayerScript : MonoBehaviour
     UpdateUI();
   }
 
-  private void AddScore(int value = 20) => score += value;
+  public void AddScore(int value = 10) => score += value;
 
-
-  
   private void Die()
   {
     // dead = true;
@@ -218,6 +256,17 @@ public class PlayerScript : MonoBehaviour
     //   newScoreText.text = "Sua Pontuação: " + newScore.ToString() + "\nPontuação Máxima: " + PlayerPrefs.GetInt("Score");
     // }
     // menu.SetActive(true);
-    // Time.timeScale = 0;
+    // this.GetComponent<AudioSource>().Stop();
+    Time.timeScale = 0;
+    deathPanel.SetActive(true);
+  }
+
+  private IEnumerator UpdateScore()
+  {
+    while(true)
+    {
+      yield return new WaitForSeconds(10);
+      AddScore(10);
+    }
   }
 }

@@ -7,7 +7,6 @@ using TMPro;
 using System.Linq;
 using Newtonsoft.Json;
 using System;
-using System.Threading;
 
 public class QuestionScript : MonoBehaviour
 {
@@ -15,7 +14,8 @@ public class QuestionScript : MonoBehaviour
   List<string> letters = new() { "a)", "b)", "c)", "d)" };
   GameObject player;
   Stack<Question> questionStack = new();
-  bool questionOpen = false;
+  [NonSerialized]
+  public bool questionOpen = false;
   public TextMeshProUGUI statement;
   public TextMeshProUGUI[] answers = new TextMeshProUGUI[4];
   public TextMeshProUGUI tip;
@@ -185,6 +185,7 @@ public class QuestionScript : MonoBehaviour
     ResetQuestionUI();
     Debug.Log("Correct? " + isCorrect.ToString());
     HealLogic((bool)isCorrect!);
+    QuestionScore((bool)isCorrect!);
     ResetParams();
     spawnScript.RestartSpawn();
     playerScript.RestartUpdateFuel();
@@ -229,6 +230,14 @@ public class QuestionScript : MonoBehaviour
     {
       if (itemTag == "Health") playerScript.Heal((int)healingAmount!);
       else if (itemTag == "Fuel") playerScript.AddGas((int)healingAmount!);
+    }
+  }
+
+  public void QuestionScore(bool correct)
+  {
+    if (correct)
+    {
+      playerScript.AddScore(100);
     }
   }
 }
