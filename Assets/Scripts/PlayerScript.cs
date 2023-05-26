@@ -45,7 +45,17 @@ public class PlayerScript : MonoBehaviour
   private float yMin, yMax;
   private float spriteSize;
 
-  private Coroutine fuelCoroutine = null;
+  [NonSerialized]
+  public Coroutine fuelCoroutine = null;
+
+  private Coroutine cutscene = null;
+  public TextMeshProUGUI cutsceneText;
+  public GameObject cutscenePanel;
+
+  public GameObject victoryPanel;
+
+  [NonSerialized]
+  public bool timeStop = false;
 
   private void Start()
   {
@@ -53,10 +63,11 @@ public class PlayerScript : MonoBehaviour
     health = maxHealth;
     fuel = maxFuel;
     score = 0;
-    fuelCoroutine = StartCoroutine(UpdateFuel());
-    // StartCoroutine(UpdateScore());
     spawnScript = spawn.GetComponent<SpawnScript>();
     spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f;
+    enabled = false;
+    cutscene = StartCoroutine(Cutscene());
+    fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
   }
 
@@ -75,6 +86,23 @@ public class PlayerScript : MonoBehaviour
     {
       PauseScreen();
     }
+  }
+
+  private IEnumerator Cutscene()
+  {
+    cutscenePanel.SetActive(true);
+    yield return new WaitForSeconds(1);
+    cutsceneText.text = "3";
+    yield return new WaitForSeconds(1);
+    cutsceneText.text = "2";
+    yield return new WaitForSeconds(1);
+    cutsceneText.text = "1";
+    yield return new WaitForSeconds(1);
+    cutsceneText.text = "Let's Go!";
+    yield return new WaitForSeconds(1);
+    cutscenePanel.SetActive(false);
+    // custceneTime = false;
+    enabled = true;
   }
 
   private void UpdateItemRatio()
@@ -110,7 +138,7 @@ public class PlayerScript : MonoBehaviour
       isPaused = false;
       Time.timeScale = 1f;
       pausePanel.SetActive(false);
-      // this.GetComponent<AudioSource>().Pause();
+      this.GetComponent<AudioSource>().Pause();
       if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
     }
     else
@@ -118,7 +146,7 @@ public class PlayerScript : MonoBehaviour
       isPaused = true;
       Time.timeScale = 0f;
       pausePanel.SetActive(true);
-      // this.GetComponent<AudioSource>().UnPause();
+      this.GetComponent<AudioSource>().UnPause();
       if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(false);
     }
   }
@@ -158,12 +186,25 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateTimer()
   {
-    seconds += Time.deltaTime;
-    if ((int)seconds >= 60)
+    if(!timeStop)
     {
-      seconds -= 60;
-      minutes++;
+      seconds += Time.deltaTime;
+      if ((int)seconds >= 60)
+      {
+        seconds -= 60;
+        minutes++;
+      }
+      if(minutes >= 2)
+      {
+        Victory();
+      }
     }
+  }
+
+  private void Victory()
+  {
+    victoryPanel.SetActive(true);
+    Time.timeScale = 0;
   }
 
   public IEnumerator UpdateFuel()
@@ -190,10 +231,7 @@ public class PlayerScript : MonoBehaviour
 
   public void RestartUpdateFuel()
   {
-    if (fuelCoroutine != null)
-    {
-      StopUpdateFuel();
-    }
+    StopUpdateFuel();
     fuelCoroutine = StartCoroutine(UpdateFuel());
   }
 
@@ -269,7 +307,7 @@ public class PlayerScript : MonoBehaviour
     //   newScoreText.text = "Sua Pontuação: " + newScore.ToString() + "\nPontuação Máxima: " + PlayerPrefs.GetInt("Score");
     // }
     // menu.SetActive(true);
-    // this.GetComponent<AudioSource>().Stop();
+    this.GetComponent<AudioSource>().Stop();
     Time.timeScale = 0;
     deathPanel.SetActive(true);
   }

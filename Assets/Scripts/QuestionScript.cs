@@ -35,8 +35,8 @@ public class QuestionScript : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    player = GameObject.FindGameObjectWithTag("Player");
-    spawn = GameObject.FindGameObjectWithTag("Respawn");
+    player = GameObject.FindGameObjectWithTag("Player").gameObject;
+    spawn = GameObject.FindGameObjectWithTag("Respawn").gameObject;
     spawnScript = spawn.gameObject.GetComponent<SpawnScript>();
     playerScript = player.gameObject.GetComponent<PlayerScript>();
     LoadPlayerPrefs();
@@ -147,6 +147,7 @@ public class QuestionScript : MonoBehaviour
       isCorrect = null;
       SelectQuestion();
       // Debug.Log("Is here.1");
+      playerScript.timeStop = true;
       yield return StartCoroutine(QuestionCountdown(15, AnswerAndResolution));
     }
   }
@@ -182,6 +183,7 @@ public class QuestionScript : MonoBehaviour
   public void FinishQuestion()
   {
     // Debug.Log("Is here.3");
+    playerScript.timeStop = false;
     ResetQuestionUI();
     // Debug.Log("Correct? " + isCorrect.ToString());
     HealLogic((bool)isCorrect!);
