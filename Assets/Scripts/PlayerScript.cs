@@ -34,11 +34,16 @@ public class PlayerScript : MonoBehaviour
   private bool isPaused;
   public GameObject pausePanel;
   public string cena;
+  private float timeSinceLastScoreUpdate = 0f;
+  private int lastHealthUpdate = 0;
+  private int lastFuelUpdate = 0;
+  private SpawnScript spawnScript;
 
   // Start is called before the first frame update
 
   private float xMin, xMax;
   private float yMin, yMax;
+  private float spriteSize;
 
   private Coroutine fuelCoroutine = null;
 
@@ -49,7 +54,9 @@ public class PlayerScript : MonoBehaviour
     fuel = maxFuel;
     score = 0;
     fuelCoroutine = StartCoroutine(UpdateFuel());
-    StartCoroutine(UpdateScore());
+    // StartCoroutine(UpdateScore());
+    spawnScript = spawn.GetComponent<SpawnScript>();
+    spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f;
     UpdateUI();
   }
 
@@ -60,6 +67,7 @@ public class PlayerScript : MonoBehaviour
       UpdateItemRatio();
       UpdateUI();
       UpdateTimer();
+      UpdateScore();
       Movement();
     }
 
@@ -71,22 +79,27 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateItemRatio()
   {
-    SpawnScript script = spawn.GetComponent<SpawnScript>();
-    if (health == maxHealth)
+    // SpawnScript script = spawn.GetComponent<SpawnScript>();
+    if(lastFuelUpdate != fuel && lastHealthUpdate != health)
     {
-      script.RemoveHeart();
-    }
-    else 
-    {
-      script.AddHeart();
-    }
-    if (fuel == maxFuel)
-    {
-      script.RemoveFuel();
-    }
-    else
-    {
-      script.AddFuel();
+      if (health == maxHealth)
+      {
+        spawnScript.RemoveHeart();
+      }
+      else 
+      {
+        spawnScript.AddHeart();
+      }
+      if (fuel == maxFuel)
+      {
+        spawnScript.RemoveFuel();
+      }
+      else
+      {
+        spawnScript.AddFuel();
+      }
+      lastFuelUpdate = fuel;
+      lastHealthUpdate = health;
     }
   }
 
@@ -117,7 +130,7 @@ public class PlayerScript : MonoBehaviour
 
   private void Movement()
   {
-    var spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f; // Working with a simple box here, adapt to you necessity
+    // var spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f; // Working with a simple box here, adapt to you necessity
 
     var cam = Camera.main;// Camera component to get their size, if this change in runtime make sure to update values
     var camHeight = cam.orthographicSize;
@@ -127,11 +140,11 @@ public class PlayerScript : MonoBehaviour
     yMax = (camHeight - 1.25f) - spriteSize; // upper bound
 
     xMin = -camWidth + spriteSize; // left bound
-    xMax = (camWidth - camWidth) - spriteSize; // right bound 
+    xMax = -spriteSize; // right bound 
 
     // Get buttons
-    var ver = Input.GetAxis("Vertical");
-    var hor = Input.GetAxis("Horizontal");
+    var ver = Input.GetAxisRaw("Vertical");
+    var hor = Input.GetAxisRaw("Horizontal");
 
     // Calculate movement direction
     var direction = new Vector2(hor, ver).normalized;
@@ -261,12 +274,13 @@ public class PlayerScript : MonoBehaviour
     deathPanel.SetActive(true);
   }
 
-  private IEnumerator UpdateScore()
+  private void UpdateScore()
   {
-    while(true)
+    timeSinceLastScoreUpdate += Time.deltaTime;
+    if(timeSinceLastScoreUpdate >= 10f)
     {
-      yield return new WaitForSeconds(10);
       AddScore(10);
+      timeSinceLastScoreUpdate = 0f;
     }
   }
 }

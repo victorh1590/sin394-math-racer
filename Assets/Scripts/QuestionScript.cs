@@ -196,7 +196,7 @@ public class QuestionScript : MonoBehaviour
   IEnumerator QuestionCountdown(int seconds, Action action)
   {
     int counter = seconds;
-    while (counter > 0)
+    while (counter >= 0)
     {
       UpdateTimer(counter);
       yield return new WaitForSeconds(1);
@@ -209,7 +209,7 @@ public class QuestionScript : MonoBehaviour
   IEnumerator AnswerCountdown(int seconds, Action action)
   {
     int counter = seconds;
-    while (counter > 0)
+    while (counter >= 0)
     {
       UpdateTimer(counter);
       yield return new WaitForSeconds(1);
