@@ -46,7 +46,7 @@ public class MenuScript : MonoBehaviour
     IEnumerator WaitPlay()
     {
         yield return new WaitForSeconds(.5f);
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("MenuSelect");
     }
 
     public void ReturnToMenu()
