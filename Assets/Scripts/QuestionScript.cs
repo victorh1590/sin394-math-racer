@@ -35,8 +35,8 @@ public class QuestionScript : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    player = GameObject.FindGameObjectWithTag("Player");
-    spawn = GameObject.FindGameObjectWithTag("Respawn");
+    player = GameObject.FindGameObjectWithTag("Player").gameObject;
+    spawn = GameObject.FindGameObjectWithTag("Respawn").gameObject;
     spawnScript = spawn.gameObject.GetComponent<SpawnScript>();
     playerScript = player.gameObject.GetComponent<PlayerScript>();
     LoadPlayerPrefs();
@@ -54,7 +54,7 @@ public class QuestionScript : MonoBehaviour
 
   void LoadPlayerPrefs()
   {
-    var path = Path.Combine(Application.dataPath, "Resources", "questions.json");
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", "questions.json");
     var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
     // Debug.Log(path);
     // Debug.Log(content);
@@ -147,6 +147,7 @@ public class QuestionScript : MonoBehaviour
       isCorrect = null;
       SelectQuestion();
       // Debug.Log("Is here.1");
+      playerScript.timeStop = true;
       yield return StartCoroutine(QuestionCountdown(15, AnswerAndResolution));
     }
   }
@@ -182,6 +183,7 @@ public class QuestionScript : MonoBehaviour
   public void FinishQuestion()
   {
     // Debug.Log("Is here.3");
+    playerScript.timeStop = false;
     ResetQuestionUI();
     // Debug.Log("Correct? " + isCorrect.ToString());
     HealLogic((bool)isCorrect!);
@@ -196,7 +198,7 @@ public class QuestionScript : MonoBehaviour
   IEnumerator QuestionCountdown(int seconds, Action action)
   {
     int counter = seconds;
-    while (counter > 0)
+    while (counter >= 0)
     {
       UpdateTimer(counter);
       yield return new WaitForSeconds(1);
@@ -209,7 +211,7 @@ public class QuestionScript : MonoBehaviour
   IEnumerator AnswerCountdown(int seconds, Action action)
   {
     int counter = seconds;
-    while (counter > 0)
+    while (counter >= 0)
     {
       UpdateTimer(counter);
       yield return new WaitForSeconds(1);

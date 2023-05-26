@@ -10,8 +10,7 @@ public class SpawnScript : MonoBehaviour
   // [SerializeField]
   // private GameObject bigSwarmerPrefab;
 
-  [SerializeField]
-  private float swarmerInterval = 2.5f;
+  private float swarmerInterval = 7.5f;
   // [SerializeField]
   // private float bigSwarmerInterval = 10.0f;
 
@@ -121,6 +120,6 @@ public class SpawnScript : MonoBehaviour
     {
         StopSpawn();
     }
-    spawnCoroutine = StartCoroutine(SpawnObstacle(swarmerInterval, itemsAndObstaclesList));
+    spawnCoroutine = StartCoroutine(SpawnObstacle(swarmerInterval - 5f, itemsAndObstaclesList)); // -5f is the cutscene time.
   }
 }
