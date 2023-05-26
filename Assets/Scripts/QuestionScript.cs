@@ -54,7 +54,7 @@ public class QuestionScript : MonoBehaviour
 
   void LoadPlayerPrefs()
   {
-    var path = Path.Combine(Application.dataPath, "Resources", "questions.json");
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", "questions.json");
     var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
     // Debug.Log(path);
     // Debug.Log(content);

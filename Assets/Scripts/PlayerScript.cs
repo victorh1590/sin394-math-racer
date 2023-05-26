@@ -138,7 +138,7 @@ public class PlayerScript : MonoBehaviour
       isPaused = false;
       Time.timeScale = 1f;
       pausePanel.SetActive(false);
-      this.GetComponent<AudioSource>().Pause();
+      this.GetComponent<AudioSource>().UnPause();
       if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
     }
     else
@@ -146,7 +146,7 @@ public class PlayerScript : MonoBehaviour
       isPaused = true;
       Time.timeScale = 0f;
       pausePanel.SetActive(true);
-      this.GetComponent<AudioSource>().UnPause();
+      this.GetComponent<AudioSource>().Pause();
       if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(false);
     }
   }
