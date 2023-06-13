@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
 
   // Start is called before the first frame update
 
+
   private float xMin, xMax;
   private float yMin, yMax;
   private float spriteSize;
@@ -56,35 +57,51 @@ public class PlayerScript : MonoBehaviour
 
   [NonSerialized]
   public bool timeStop = false;
+    public bool P_tutorial = true;
 
+    public void PPP(bool X)
+    {
+        P_tutorial = X;
+        Debug.Log("AaA");
+    }
   private void Start()
   {
+    P_tutorial = true;
     Time.timeScale = 1f;
     health = maxHealth;
     fuel = maxFuel;
     score = 0;
-    spawnScript = spawn.GetComponent<SpawnScript>();
     spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f;
     enabled = false;
-    cutscene = StartCoroutine(Cutscene());
+    spawnScript = spawn.GetComponent<SpawnScript>();
+    if (cena != "Tutorial")
+    {
+        cutscene = StartCoroutine(Cutscene());
+    }
+    else { 
+        enabled = true;
+    }
     fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
   }
 
   private void Update()
   {
-    if (!isPaused)
-    {
-      UpdateItemRatio();
-      UpdateUI();
-      UpdateTimer();
-      UpdateScore();
-      Movement();
-    }
+        if (P_tutorial)
+        {
+            if (!isPaused || P_tutorial)
+            {
+              UpdateItemRatio();
+              UpdateUI();
+              UpdateTimer();
+              UpdateScore();
+              Movement();
+            }
 
-    if (Input.GetKeyDown(KeyCode.Escape))
-    {
-      PauseScreen();
+            if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
+            {
+              PauseScreen();
+        }
     }
   }
 
@@ -237,10 +254,10 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateUI()
   {
-    lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = "Vida: " + (int)(health / 20);
-    fuelBar.fillAmount = (float)fuel / maxFuel;
-    fuelText.text = "Gasolina: " + fuel + "%";
+    lifeBar.fillAmount = health;
+    healthText.text = "" + health + "%";
+    fuelBar.fillAmount = fuel;
+    fuelText.text = "" + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     scoreText.text = score.ToString("0000");
   }
