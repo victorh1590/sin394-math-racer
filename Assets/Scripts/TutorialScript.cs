@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class TutorialScript : MonoBehaviour
 {
-
+    private PlayerScript PScript;
 
     public GameObject SetaHudVida;
     public GameObject SetaHudTimer;
@@ -17,6 +17,9 @@ public class TutorialScript : MonoBehaviour
     public GameObject HudVida;
     public GameObject HudTimer;
     public GameObject HudPontos;
+
+    public GameObject Obst;
+    public GameObject PU;
 
     public GameObject painel;
     public GameObject[] Cientist;
@@ -38,10 +41,10 @@ public class TutorialScript : MonoBehaviour
     private int contador = 0;
 
     private bool Ativado = true;
-    private bool[] setaactive = { false, false, false };
-
+    private bool[] setaactive = { false, false, false, false, false};
     private void Start()
     {
+        PScript = FindObjectOfType<PlayerScript>();
         falasAdd();
         startTutorial();
     }
@@ -70,17 +73,28 @@ public class TutorialScript : MonoBehaviour
             {
                 SetaHudPontos.SetActive(Ativado);
             }
+            else if (setaactive[3])
+            {
+                Obst.SetActive(Ativado);
+            }
+            else if (setaactive[4])
+            {
+                PU.SetActive(Ativado);
+            }
             Ativado = !Ativado;
             lastSkipTimeA = Time.time;
         }
     }
     private void falasAdd()
     {
-       /*0*/ dialogo.Add("Olá! Seja bem vindo ao tutorial.\nMeu nome é Dr. Heinz Doof, fui escalado para lhe guiar.");
-       /*1*/ dialogo.Add("Para movimentar, aperte as teclas a seguir:");
-       /*2*/ dialogo.Add("Esse aqui é o seu painel de status, aqui será indicado a sua vida e a quantidade de gasolina que restam em seu carro.");
-       /*3*/ dialogo.Add("Aqui é tempo de duração da fase, o objetivo é conseguir alcançar o tempo de 2 Minutos sem que a sua vida e gasolina zere.");
-       /*4*/ dialogo.Add("Esse  é a sua pontuação da fase. Ela irá aumentar ao longo do tempo, e também sera adiconado pontos por acertos das questões que surgirem.");
+       /*0*/ dialogo.Add("Olá! Seja bem-vindo ao tutorial. Meu nome é Dr. Alex e fui designado para ser seu guia.");
+       /*1*/ dialogo.Add("Para se movimentar, utilize as \"WASD\"");
+       /*2*/ dialogo.Add("Este é o seu painel de status, onde você pode acompanhar a sua vida e a quantidade de gasolina restante no seu carro.");
+       /*3*/ dialogo.Add("Aqui está o tempo de duração da fase. O objetivo é conseguir alcançar 2 minutos sem que sua vida e gasolina se esgotem.\"");
+       /*4*/ dialogo.Add("A pontuação da fase representa o seu desempenho ao longo do tempo e será aumentada gradualmente. Além disso, você também receberá pontos adicionais por acertar as questões que surgirem durante o jogo.");
+       /*5*/ dialogo.Add("Durante cada fase, obstáculos aparecerão no caminho. Se você colidir com esses obstáculos, sua vida será reduzida. Portanto, é importante tomar cuidado e evitar colisões.");
+       /*6*/ dialogo.Add("Se você perder um coração e/ou estiver com pouca gasolina, serão exibidos \"Power Ups\" coletaveis para ajudá-lo a recuperar o que foi perdido ao longo da corrida.");
+       /*7*/ dialogo.Add("Ao coletar um item, você será desafiado por um teste exibido nesta área de diálogo. Para obter o item, é necessário responder corretamente. Caso responda incorretamente, você perderá o \"Power Up\".");
 
     }
     private IEnumerator FalasCoroutine()
@@ -90,7 +104,7 @@ public class TutorialScript : MonoBehaviour
             texto.text = dialogo[indiceFala];
             if(indiceFala == 0)
             {
-                Time.timeScale = 0f;
+                PScript.PPP(false);
                 Cientist[1].SetActive(false);
             }
 
@@ -101,6 +115,7 @@ public class TutorialScript : MonoBehaviour
                 indiceFala++;
                 if (indiceFala == 1)
                 {
+                    PScript.PPP(true);
                     block = true;
                     wasdPanel.SetActive(true);
                     espaco.SetActive(false);
@@ -111,9 +126,9 @@ public class TutorialScript : MonoBehaviour
                 }
                 if (indiceFala == 2)
                 {
-                    Time.timeScale = 1f;
+
                     yield return new WaitForSeconds(2f); // Atraso de 2 segundos
-                    Time.timeScale = 0f;
+                    PScript.PPP(false);
                     painel.SetActive(true);
                     espaco.SetActive(true);
                     HudVida.SetActive(true);
@@ -139,7 +154,19 @@ public class TutorialScript : MonoBehaviour
                 else if (indiceFala == 5)
                 {
                     SetaHudPontos.SetActive(false);
+                    Obst.SetActive(true);
                     setaactive[2] = false;
+                }
+                else if (indiceFala == 6)
+                {
+                    Obst.SetActive(false);
+                    PU.SetActive(true);
+                    setaactive[3] = false;
+                }
+                else if (indiceFala == 7)
+                {
+                    PU.SetActive(false);
+                    setaactive[4] = false;
                 }
             }
         }

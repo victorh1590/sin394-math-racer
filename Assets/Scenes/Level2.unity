@@ -2842,6 +2842,7 @@ MonoBehaviour:
   cutsceneText: {fileID: 345183296}
   cutscenePanel: {fileID: 697777559}
   victoryPanel: {fileID: 478012663}
+  P_tutorial: 1
 --- !u!212 &484571771
 SpriteRenderer:
   m_ObjectHideFlags: 0

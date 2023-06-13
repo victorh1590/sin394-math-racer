@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
 
   // Start is called before the first frame update
 
+
   private float xMin, xMax;
   private float yMin, yMax;
   private float spriteSize;
@@ -56,9 +57,16 @@ public class PlayerScript : MonoBehaviour
 
   [NonSerialized]
   public bool timeStop = false;
+    public bool P_tutorial = true;
 
+    public void PPP(bool X)
+    {
+        P_tutorial = X;
+        Debug.Log("AaA");
+    }
   private void Start()
   {
+    P_tutorial = true;
     Time.timeScale = 1f;
     health = maxHealth;
     fuel = maxFuel;
@@ -79,18 +87,21 @@ public class PlayerScript : MonoBehaviour
 
   private void Update()
   {
-    if (!isPaused)
-    {
-      UpdateItemRatio();
-      UpdateUI();
-      UpdateTimer();
-      UpdateScore();
-      Movement();
-    }
+        if (P_tutorial)
+        {
+            if (!isPaused || P_tutorial)
+            {
+              UpdateItemRatio();
+              UpdateUI();
+              UpdateTimer();
+              UpdateScore();
+              Movement();
+            }
 
-    if (Input.GetKeyDown(KeyCode.Escape))
-    {
-      PauseScreen();
+            if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
+            {
+              PauseScreen();
+        }
     }
   }
 
