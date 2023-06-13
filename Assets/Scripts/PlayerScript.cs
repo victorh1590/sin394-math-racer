@@ -63,10 +63,16 @@ public class PlayerScript : MonoBehaviour
     health = maxHealth;
     fuel = maxFuel;
     score = 0;
-    spawnScript = spawn.GetComponent<SpawnScript>();
     spriteSize = GetComponent<SpriteRenderer>().bounds.size.x * .5f;
     enabled = false;
-    cutscene = StartCoroutine(Cutscene());
+    spawnScript = spawn.GetComponent<SpawnScript>();
+    if (cena != "Tutorial")
+    {
+        cutscene = StartCoroutine(Cutscene());
+    }
+    else { 
+        enabled = true;
+    }
     fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
   }
@@ -237,10 +243,10 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateUI()
   {
-    lifeBar.fillAmount = (float)health / maxHealth;
-    healthText.text = "Vida: " + (int)(health / 20);
-    fuelBar.fillAmount = (float)fuel / maxFuel;
-    fuelText.text = "Gasolina: " + fuel + "%";
+    lifeBar.fillAmount = health;
+    healthText.text = "" + health + "%";
+    fuelBar.fillAmount = fuel;
+    fuelText.text = "" + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     scoreText.text = score.ToString("0000");
   }
