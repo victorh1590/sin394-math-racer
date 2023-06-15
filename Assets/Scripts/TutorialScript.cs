@@ -112,7 +112,10 @@ public class TutorialScript : MonoBehaviour
             if (indiceFala < dialogo.Count && skip == true)
             {
                 skip = false;
-                indiceFala++;
+                if(indiceFala+1 < dialogo.Count)
+                {
+                    indiceFala++;
+                }
                 if (indiceFala == 1)
                 {
                     PScript.PPP(true);
@@ -153,6 +156,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 else if (indiceFala == 5)
                 {
+                    Cientist[1].SetActive(false);
                     SetaHudPontos.SetActive(false);
                     Obst.SetActive(true);
                     setaactive[2] = false;
