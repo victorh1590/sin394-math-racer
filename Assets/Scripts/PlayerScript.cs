@@ -257,7 +257,6 @@ public class PlayerScript : MonoBehaviour
     private void UpdateUI()
     {
         lifeBar.fillAmount = health/100;
-        Debug.Log(health);
         healthText.text = "" + health + "%";
         fuelBar.fillAmount = fuel/100;
         fuelText.text = "" + fuel + "%";
