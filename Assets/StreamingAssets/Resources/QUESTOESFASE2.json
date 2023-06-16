@@ -88,14 +88,14 @@
       "Tip": "Subtraia os numeradores e mantenha o denominador."
     },
     {
-      "Statement": "Subtraia as frações: 4/5 - 1/5.",
+      "Statement": "Subtraia as frações: 4/5 - 1/6.",
       "Answers": [
-        "3/5",
+        "19/30",
         "1/5",
         "5/4",
         "4/10"
       ],
-      "CorrectAnswer": "3/5",
+      "CorrectAnswer": "19/30",
       "Tip": "Subtraia os numeradores e mantenha o denominador."
     },
     {
@@ -347,12 +347,12 @@
     {
       "Statement": "Calcule a soma das frações: 3/8 + 5/6.",
       "Answers": [
-        "37/48",
+        "29/24",
         "3/14",
         "6/16",
         "4/9"
       ],
-      "CorrectAnswer": "37/48",
+      "CorrectAnswer": "29/24",
       "Tip": "Encontre um denominador comum e some os numeradores."
     },
     {
@@ -391,7 +391,7 @@
     {
       "Statement": "Calcule a soma das frações: 3/7 + 4/9.",
       "Answers": [
-        "71/63",
+        "55/63",
         "3/14",
         "7/14",
         "5/9"
@@ -453,7 +453,8 @@
 		  "3/2",
 		  "2/3"
 		],
-		"CorrectAnswer": "3/2"
+		"CorrectAnswer": "3/2",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 9/6",
@@ -463,7 +464,9 @@
 		  "2/3",
 		  "6/9"
 		],
-		"CorrectAnswer": "2/3"
+		"CorrectAnswer": "3/2",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
+		
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 250/30",
@@ -473,7 +476,8 @@
 		  "25/30",
 		  "0"
 		],
-		"CorrectAnswer": "0"
+		"CorrectAnswer": "25/3",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 150/60",
@@ -483,7 +487,8 @@
 		  "2/5",
 		  "5/2"
 		],
-		"CorrectAnswer": "2/5"
+		"CorrectAnswer": "5/2",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 60/8",
@@ -493,7 +498,8 @@
 		  "2/3",
 		  "6/2"
 		],
-		"CorrectAnswer": "2/3"
+		"CorrectAnswer": "15/2",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 18/4",
@@ -503,7 +509,8 @@
 		  "9/3",
 		  "9"
 		],
-		"CorrectAnswer": "9"
+		"CorrectAnswer": "9/2",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 6/5",
@@ -513,7 +520,8 @@
 		  "2/5",
 		  "5/6"
 		],
-		"CorrectAnswer": "2/5"
+		"CorrectAnswer": "Não pode simplificar",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 10000/300",
@@ -523,7 +531,8 @@
 		  "100/3",
 		  "1/30"
 		],
-		"CorrectAnswer": "1/3"
+		"CorrectAnswer": "100/30",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 9/4",
@@ -533,7 +542,8 @@
 		  "Não pode simplificar",
 		  "1"
 		],
-		"CorrectAnswer": "Não pode simplificar"
+		"CorrectAnswer": "Não pode simplificar",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
 	  {
 		"Statement": "Simplifique a expressão: 150/7",
@@ -543,6 +553,273 @@
 		  "15/7",
 		  "Não pode simplificar"
 		],
-		"CorrectAnswer": "Não pode simplificar"
+		"CorrectAnswer": "Não pode simplificar",
+		"Tip": "Encontre um numero que possa simplificar tanto no numerador quanto no denominador."
 	  },
+	  {
+    "Statement": "Um carro consome 12 litros de combustível por 100 km percorridos. Quantos litros ele consumirá para percorrer 400 km?",
+    "Answers": [
+      "24 litros",
+      "32 litros",
+      "36 litros",
+      "48 litros"
+    ],
+    "CorrectAnswer": "48 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 15 litros de combustível por 200 km percorridos. Quantos litros ele consumirá para percorrer 400 km?",
+    "Answers": [
+      "25 litros",
+      "30 litros",
+      "35 litros",
+      "40 litros"
+    ],
+    "CorrectAnswer": "30 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 10 litros de combustível por 150 km percorridos. Quantos litros ele consumirá para percorrer 450 km?",
+    "Answers": [
+      "25 litros",
+      "30 litros",
+      "35 litros",
+      "40 litros"
+    ],
+    "CorrectAnswer": "30 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 8 litros de combustível por 100 km percorridos. Quantos litros ele consumirá para percorrer 250 km?",
+    "Answers": [
+      "16 litros",
+      "20 litros",
+      "24 litros",
+      "30 litros"
+    ],
+    "CorrectAnswer": "20 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  
+  {
+    "Statement": "Um carro consome 18 litros de combustível por 150 km percorridos. Quantos litros ele consumirá para percorrer 300 km?",
+    "Answers": [
+      "30 litros",
+      "36 litros",
+      "40 litros",
+      "45 litros"
+    ],
+    "CorrectAnswer": "36 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+ 
+  {
+    "Statement": "Um carro consome 9 litros de combustível por 120 km percorridos. Quantos litros ele consumirá para percorrer 360 km?",
+    "Answers": [
+      "24 litros",
+      "27 litros",
+      "30 litros",
+      "36 litros"
+    ],
+    "CorrectAnswer": "27 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 12 litros de combustível por 150 km percorridos. Quantos litros ele consumirá para percorrer 450 km?",
+    "Answers": [
+      "30 litros",
+      "36 litros",
+      "40 litros",
+      "45 litros"
+    ],
+    "CorrectAnswer": "36 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+      "Statement": "Um carro tem 4 pneus. Quantos pneus são necessários para um conjunto de 6 carros?",
+      "Answers": [
+        "20 pneus",
+        "22 pneus",
+        "24 pneus",
+        "26 pneus"
+      ],
+      "CorrectAnswer": "24 pneus",
+      "Tip": "Multiplique o número de pneus por carro pelo número de carros para obter o total de pneus."
+    },
+    {
+      "Statement": "Um carro tem 6 cilindros. Quantos cilindros são necessários para um conjunto de 5 carros?",
+      "Answers": [
+        "25 cilindros",
+        "26 cilindros",
+        "27 cilindros",
+        "28 cilindros"
+      ],
+      "CorrectAnswer": "30 cilindros",
+      "Tip": "Multiplique o número de cilindros por carro pelo número de carros para obter o total de cilindros."
+    },
+    {
+      "Statement": "Um carro tem 2 retrovisores. Quantos retrovisores são necessários para um conjunto de 8 carros?",
+      "Answers": [
+        "14 retrovisores",
+        "16 retrovisores",
+        "18 retrovisores",
+        "20 retrovisores"
+      ],
+      "CorrectAnswer": "16 retrovisores",
+      "Tip": "Multiplique o número de retrovisores por carro pelo número de carros para obter o total de retrovisores."
+    },
+    {
+      "Statement": "Um carro tem 5 marchas. Quantas marchas são necessárias para um conjunto de 3 carros?",
+      "Answers": [
+        "12 marchas",
+        "13 marchas",
+        "14 marchas",
+        "15 marchas"
+      ],
+      "CorrectAnswer": "15 marchas",
+      "Tip": "Multiplique o número de marchas por carro pelo número de carros para obter o total de marchas."
+    },
+    {
+      "Statement": "Um carro tem 4 portas. Quantas portas são necessárias para um conjunto de 7 carros?",
+      "Answers": [
+        "24 portas",
+        "26 portas",
+        "28 portas",
+        "30 portas"
+      ],
+      "CorrectAnswer": "28 portas",
+      "Tip": "Multiplique o número de portas por carro pelo número de carros para obter o total de portas."
+    },
+  {
+    "Statement": "Um carro tem um tanque de combustível com capacidade para 60 litros. Se o consumo médio do carro é de 10 km/l, qual é a distância máxima que ele pode percorrer sem abastecer?",
+    "Answers": [
+      "500 km",
+      "600 km",
+      "700 km",
+      "800 km"
+    ],
+    "CorrectAnswer": "600 km",
+    "Tip": "Multiplique a capacidade do tanque pelo consumo médio para determinar a distância máxima."
+  },
+  {
+    "Statement": "Um carro consome 20 litros de combustível para percorrer 320 km. Quantos litros ele consumirá para percorrer 400 km?",
+    "Answers": [
+      "25 litros",
+      "30 litros",
+      "35 litros",
+      "40 litros"
+    ],
+    "CorrectAnswer": "25 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 16 litros de combustível para percorrer 400 km. Quantos litros ele consumirá para percorrer 480 km?",
+    "Answers": [
+      "20 litros",
+      "24 litros",
+      "28 litros",
+      "32 litros"
+    ],
+    "CorrectAnswer": "20 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro consome 14 litros de combustível para percorrer 280 km. Quantos litros ele consumirá para percorrer 350 km?",
+    "Answers": [
+      "17.5 litros",
+      "20 litros",
+      "22.5 litros",
+      "25 litros"
+    ],
+    "CorrectAnswer": "17.5 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro tem um tanque de combustível com capacidade para 50 litros. Se a autonomia do carro é de 500 km, quantos litros de combustível são necessários para percorrer 250 km?",
+    "Answers": [
+      "20 litros",
+      "25 litros",
+      "30 litros",
+      "35 litros"
+    ],
+    "CorrectAnswer": "25 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro viaja a uma velocidade média de 60 km/h. Se ele percorrer 3 horas, qual será a distância percorrida pelo carro?",
+    "Answers": [
+    "120 km",
+    "150 km",
+    "180 km",
+    "200 km"
+    ],
+    "CorrectAnswer": "180 km",
+    "Tip": "Multiplique a velocidade média do carro pelo tempo de viagem para obter a distância percorrida."
+    },    
+    {
+    "Statement": "Um carro consome 0,5 litros de combustível por quilômetro percorrido. Quantos litros ele consumirá para percorrer 150 km?",
+    "Answers": [
+    "50 litros",
+    "75 litros",
+    "100 litros",
+    "125 litros"
+    ],
+    "CorrectAnswer": "75 litros",
+    "Tip": "Multiplique o consumo de combustível por quilômetro pela distância percorrida para encontrar a resposta."
+    },
+	{
+    "Statement": "Um carro consome 8 litros de combustível para percorrer 160 km. Quantos litros ele precisará para percorrer 400 km?",
+    "Answers": [
+      "20 litros",
+      "30 litros",
+      "40 litros",
+      "50 litros"
+    ],
+    "CorrectAnswer": "40 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+  },
+  {
+    "Statement": "Um carro tem 4 rodas. Quantas rodas terão 5 carros?",
+    "Answers": [
+    "15 rodas",
+    "16 rodas",
+    "17 rodas",
+    "18 rodas"
+    ],
+    "CorrectAnswer": "20 rodas",
+    "Tip": "Multiplique o número de carros pelo número de rodas de cada carro para obter o total de rodas."
+    },
+	{
+    "Statement": "Um carro percorre 40 km com 2 litros de combustível. Quantos litros de combustível ele precisará para percorrer 80 km?",
+    "Answers": [
+    "2 litros",
+    "3 litros",
+    "4 litros",
+    "5 litros"
+    ],
+    "CorrectAnswer": "4 litros",
+    "Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+    },
+	{
+		"Statement": "Um carro consome 8 litros de combustível para percorrer 100 km. Quantos litros ele vai consumir para percorrer 250 km?",
+		"Answers": [
+		  "18 litros",
+		  "20 litros",
+		  "24 litros",
+		  "30 litros"
+		],
+		"CorrectAnswer": "30 litros",
+		"Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+	  },
+	 {
+		"Statement": "Um carro consome 10 litros de combustível para percorrer 160 km. Quantos litros ele precisará para percorrer 400 km?",
+		"Answers": [
+		  "20 litros",
+		  "25 litros",
+		  "30 litros",
+		  "35 litros"
+		],
+		"CorrectAnswer": "25 litros",
+		"Tip": "Estabeleça uma relação entre a distância percorrida e o consumo de combustível para encontrar a resposta."
+	  }
 ]

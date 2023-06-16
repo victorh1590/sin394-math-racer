@@ -159,7 +159,7 @@ public class QuestionScript : MonoBehaviour
       SelectQuestion();
       // Debug.Log("Is here.1");
       playerScript.timeStop = true;
-      yield return StartCoroutine(QuestionCountdown(15, AnswerAndResolution));
+      yield return StartCoroutine(QuestionCountdown(20, AnswerAndResolution));
     }
   }
 

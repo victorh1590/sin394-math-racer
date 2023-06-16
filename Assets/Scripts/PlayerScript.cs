@@ -152,7 +152,7 @@ public class PlayerScript : MonoBehaviour
 
   void PauseScreen()
   {
-    if (!isPaused && health >= 0)
+    if (!isPaused && health > 0 && !victoryPanel.gameObject.activeSelf)
     {
       isPaused = true;
       Time.timeScale = 0f;

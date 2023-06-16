@@ -104,7 +104,7 @@ MonoBehaviour:
   bgRenderer: {fileID: 0}
   bgTransform: {fileID: 0}
   moveOffset: 0.13325
-  moveFactor: 0.6
+  moveFactor: 1
 --- !u!114 &4308608205489234746
 MonoBehaviour:
   m_ObjectHideFlags: 0
