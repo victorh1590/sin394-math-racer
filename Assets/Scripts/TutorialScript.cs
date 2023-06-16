@@ -10,6 +10,7 @@ public class TutorialScript : MonoBehaviour
 {
     private PlayerScript PScript;
 
+
     public GameObject SetaHudVida;
     public GameObject SetaHudTimer;
     public GameObject SetaHudPontos;
@@ -22,6 +23,8 @@ public class TutorialScript : MonoBehaviour
     public GameObject PU;
 
     public GameObject painel;
+    public GameObject QuestionPainel;
+    public GameObject ArrowsPainel;
     public GameObject[] Cientist;
     public GameObject wasdPanel;
     public GameObject espaco;
@@ -95,6 +98,11 @@ public class TutorialScript : MonoBehaviour
        /*5*/ dialogo.Add("Durante cada fase, obstáculos aparecerão no caminho. Se você colidir com esses obstáculos, sua vida será reduzida. Portanto, é importante tomar cuidado e evitar colisões.");
        /*6*/ dialogo.Add("Se você perder um coração e/ou estiver com pouca gasolina, serão exibidos \"Power Ups\" coletaveis para ajudá-lo a recuperar o que foi perdido ao longo da corrida.");
        /*7*/ dialogo.Add("Ao coletar um item, você será desafiado por um teste exibido nesta área de diálogo. Para obter o item, é necessário responder corretamente. Caso responda incorretamente, você perderá o \"Power Up\".");
+       /*8*/ dialogo.Add("");
+       /*9*/ dialogo.Add("Como você pode ver, este será o modelo de perguntas utilizado.");
+       /*10*/ dialogo.Add("Estas são as informações cruciais que você precisa para seguir em frente com confiança!");
+       /*11*/ dialogo.Add("Em resumo, desejo que a sorte esteja ao seu lado e bons estudos!");
+       /*12*/dialogo.Add("");
 
     }
     private IEnumerator FalasCoroutine()
@@ -105,7 +113,7 @@ public class TutorialScript : MonoBehaviour
             if(indiceFala == 0)
             {
                 PScript.PPP(false);
-                Cientist[1].SetActive(false);
+                Cientist[0].SetActive(true);
             }
 
 
@@ -171,7 +179,35 @@ public class TutorialScript : MonoBehaviour
                 {
                     PU.SetActive(false);
                     setaactive[4] = false;
+                }else if (indiceFala == 8)
+                {
+                    espaco.SetActive(false);
+                    block = true;
+                    QuestionPainel.SetActive(true);
+                    ArrowsPainel.SetActive(true);
+                    yield return new WaitForSeconds(8f); // Atraso de 8 segundos
+                    block = false;
+                    indiceFala++;
+                    espaco.SetActive(true);
+                    Cientist[0].SetActive(true);
+                    QuestionPainel.SetActive(false);
+                    ArrowsPainel.SetActive(false);
+
+                }else if (indiceFala == 10)
+                {
+                    ArrowsPainel.SetActive(true);
                 }
+                else if (indiceFala == 11)
+                {
+                    ArrowsPainel.SetActive(false);
+                }
+                else if (indiceFala == 12)
+                {
+                    espaco.SetActive(false);
+                    PScript.victoryPanel.SetActive(true);
+
+                }
+
             }
         }
     }
