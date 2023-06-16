@@ -10,10 +10,10 @@ public class PlayerScript : MonoBehaviour
 {
   public float speed = 5;
   public Vector2 screenLimit;
-  public int health = 100;
-  public int fuel = 100;
-  public int maxFuel = 100;
-  public int maxHealth = 100;
+  public float health = 100;
+  public float fuel = 100;
+  public float maxFuel = 100;
+  public float maxHealth = 100;
   int score = 0;
   private float seconds = 0;
   private int minutes = 0;
@@ -35,8 +35,8 @@ public class PlayerScript : MonoBehaviour
   public GameObject pausePanel;
   public string cena;
   private float timeSinceLastScoreUpdate = 0f;
-  private int lastHealthUpdate = 0;
-  private int lastFuelUpdate = 0;
+  private float lastHealthUpdate = 0;
+  private float lastFuelUpdate = 0;
   private SpawnScript spawnScript;
 
   // Start is called before the first frame update
@@ -57,13 +57,12 @@ public class PlayerScript : MonoBehaviour
 
   [NonSerialized]
   public bool timeStop = false;
-    public bool P_tutorial = true;
+  public bool P_tutorial = true;
 
-    public void PPP(bool X)
-    {
-        P_tutorial = X;
-        Debug.Log("AaA");
-    }
+  public void PPP(bool X)
+  {
+    P_tutorial = X;
+  }
   private void Start()
   {
     P_tutorial = true;
@@ -76,10 +75,11 @@ public class PlayerScript : MonoBehaviour
     spawnScript = spawn.GetComponent<SpawnScript>();
     if (cena != "Tutorial")
     {
-        cutscene = StartCoroutine(Cutscene());
+      cutscene = StartCoroutine(Cutscene());
     }
-    else { 
-        enabled = true;
+    else
+    {
+      enabled = true;
     }
     fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
@@ -87,21 +87,23 @@ public class PlayerScript : MonoBehaviour
 
   private void Update()
   {
-        if (P_tutorial)
-        {
-            if (!isPaused || P_tutorial)
-            {
-              UpdateItemRatio();
-              UpdateUI();
-              UpdateTimer();
-              UpdateScore();
-              Movement();
-            }
+    if (!P_tutorial)
+    {
+      return;
+    }
+    if (!isPaused)
+    {
+      UpdateItemRatio();
+      UpdateUI();
+      UpdateTimer();
+      UpdateScore();
+      Movement();
+    }
 
-            if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
-            {
-              PauseScreen();
-        }
+    if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
+    {
+      PauseScreen();
+
     }
   }
 
@@ -125,13 +127,13 @@ public class PlayerScript : MonoBehaviour
   private void UpdateItemRatio()
   {
     // SpawnScript script = spawn.GetComponent<SpawnScript>();
-    if(lastFuelUpdate != fuel && lastHealthUpdate != health)
+    if (lastFuelUpdate != fuel && lastHealthUpdate != health)
     {
       if (health == maxHealth)
       {
         spawnScript.RemoveHeart();
       }
-      else 
+      else
       {
         spawnScript.AddHeart();
       }
@@ -150,21 +152,21 @@ public class PlayerScript : MonoBehaviour
 
   void PauseScreen()
   {
-    if (isPaused)
-    {
-      isPaused = false;
-      Time.timeScale = 1f;
-      pausePanel.SetActive(false);
-      this.GetComponent<AudioSource>().UnPause();
-      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
-    }
-    else
+    if (!isPaused && health >= 0)
     {
       isPaused = true;
       Time.timeScale = 0f;
       pausePanel.SetActive(true);
       this.GetComponent<AudioSource>().Pause();
       if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(false);
+    }
+    else
+    {
+      isPaused = false;
+      Time.timeScale = 1f;
+      pausePanel.SetActive(false);
+      this.GetComponent<AudioSource>().UnPause();
+      if (questions.GetComponent<QuestionScript>().questionOpen) questionPanel.SetActive(true);
     }
   }
 
@@ -203,7 +205,7 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateTimer()
   {
-    if(!timeStop)
+    if (!timeStop)
     {
       seconds += Time.deltaTime;
       if ((int)seconds >= 60)
@@ -211,7 +213,7 @@ public class PlayerScript : MonoBehaviour
         seconds -= 60;
         minutes++;
       }
-      if(minutes >= 2)
+      if (minutes >= 2)
       {
         Victory();
       }
@@ -230,7 +232,7 @@ public class PlayerScript : MonoBehaviour
     {
       yield return new WaitForSeconds(10);
       fuel -= 10;
-      if(fuel == 0)
+      if (fuel == 0)
       {
         Die();
       }
@@ -254,9 +256,10 @@ public class PlayerScript : MonoBehaviour
 
   private void UpdateUI()
   {
-    lifeBar.fillAmount = health;
+    lifeBar.fillAmount = health / 100;
+    Debug.Log(health);
     healthText.text = "" + health + "%";
-    fuelBar.fillAmount = fuel;
+    fuelBar.fillAmount = fuel / 100;
     fuelText.text = "" + fuel + "%";
     timeText.text = minutes + ":" + ((int)seconds).ToString("00");
     scoreText.text = score.ToString("0000");
@@ -332,7 +335,7 @@ public class PlayerScript : MonoBehaviour
   private void UpdateScore()
   {
     timeSinceLastScoreUpdate += Time.deltaTime;
-    if(timeSinceLastScoreUpdate >= 10f)
+    if (timeSinceLastScoreUpdate >= 10f)
     {
       AddScore(10);
       timeSinceLastScoreUpdate = 0f;
