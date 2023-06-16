@@ -27,7 +27,11 @@ public class ObstacleInteractionScript : MonoBehaviour
         if(obj.tag == "Player")
         {
             player.TakeDamage(damage);
+            obstacle.DestroyObstacle();
         }
-        obstacle.DestroyObstacle();
+        else
+        {
+            return;
+        }
     }
 }

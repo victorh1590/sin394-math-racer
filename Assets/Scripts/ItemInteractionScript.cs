@@ -30,7 +30,11 @@ public class ItemInteractionScript : MonoBehaviour
     if (obj.tag == "Player")
     {
       StartCoroutine(questionScript.StartQuestion(this.tag, healingAmount));
+      this.gameObject.SetActive(false);
     }
-    this.gameObject.SetActive(false);
+    else
+    {
+        return;
+    }
   }
 }

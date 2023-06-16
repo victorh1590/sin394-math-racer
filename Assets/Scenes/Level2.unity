@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 34244061}
 --- !u!23 &34244061
 MeshRenderer:
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 210191554}
 --- !u!23 &210191554
 MeshRenderer:
@@ -3279,7 +3279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 529144541}
 --- !u!23 &529144541
 MeshRenderer:
@@ -4897,7 +4897,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805178887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1402989257}
+        m_TargetAssemblyTypeName: MenuSelectScript, Assembly-CSharp
+        m_MethodName: Fase3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805178887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5068,7 +5080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.29999, y: -70}
+  m_AnchoredPosition: {x: -213.29997, y: -70.00001}
   m_SizeDelta: {x: 523.41, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &858702638
@@ -5102,7 +5114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 858702640}
 --- !u!23 &858702640
 MeshRenderer:
@@ -7297,7 +7309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.29999, y: 60}
+  m_AnchoredPosition: {x: -213.29997, y: 60}
   m_SizeDelta: {x: 523.41, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271390332
@@ -8085,6 +8097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swarmerPrefab: {fileID: 8324023643188169637, guid: f794a2885b9124744a5a84959dfad643, type: 3}
+  minRange: 0.75
+  maxRange: 1
 --- !u!1 &1397397605
 GameObject:
   m_ObjectHideFlags: 0
@@ -11860,7 +11874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.4
+  speed: 0.5
   bgRenderer: {fileID: 2096734175844165043}
 --- !u!1 &2096734175844165041
 GameObject:

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 34244061}
 --- !u!23 &34244061
 MeshRenderer:
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 210191554}
 --- !u!23 &210191554
 MeshRenderer:
@@ -2847,7 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 529144541}
 --- !u!23 &529144541
 MeshRenderer:
@@ -4666,7 +4666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.29999, y: -70}
+  m_AnchoredPosition: {x: -213.29999, y: -70.00001}
   m_SizeDelta: {x: 523.41, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &815325674
@@ -4835,7 +4835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7c99cf42dc91a49af2f2d124e57082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.3
   bgRenderer: {fileID: 858702640}
 --- !u!23 &858702640
 MeshRenderer:
@@ -7983,7 +7983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ed4941d5e9585498cdd495924a17ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swarmerPrefab: {fileID: 8324023643188169637, guid: f794a2885b9124744a5a84959dfad643, type: 3}
+  swarmerPrefab: {fileID: 8324023643188169637, guid: 028ff4abc4dabf54a949a436c029588d, type: 3}
+  minRange: 0.75
+  maxRange: 1
 --- !u!1 &1397397605
 GameObject:
   m_ObjectHideFlags: 0
@@ -11714,7 +11716,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 95a01f69866263b4a9bce4e6be59c7f3, type: 2}
+  - {fileID: 2100000, guid: 2d66e3da8c7360d4982820a1add9db62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -9,6 +9,11 @@ public class SpawnScript : MonoBehaviour
   private GameObject swarmerPrefab;
   // [SerializeField]
   // private GameObject bigSwarmerPrefab;
+  [SerializeField]
+  public float minRange = 0.75f;
+
+  [SerializeField]
+  public float maxRange = 1.0f;
 
   private float swarmerInterval = 7.5f;
   // [SerializeField]
@@ -31,8 +36,6 @@ public class SpawnScript : MonoBehaviour
     heart = itemsAndObstacles.ItemList.Where(obj => obj.tag == "Health").First();
     fuel = itemsAndObstacles.ItemList.Where(obj => obj.tag == "Fuel").First();
     itemsAndObstaclesList = new(itemsAndObstacles.ObstacleList);
-    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
-    itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     // itemsAndObstaclesList.AddRange(itemsAndObstacles.ObstacleList);
     // itemsAndObstaclesList.AddRange(itemsAndObstacles.ItemList);
