@@ -183,8 +183,8 @@ public class PlayerScript : MonoBehaviour
     var camHeight = cam.orthographicSize;
     var camWidth = cam.orthographicSize * cam.aspect;
 
-    yMin = (-camHeight + 3.25f) + spriteSize; // lower bound - y = -2
-    yMax = (camHeight - 1.25f) - spriteSize; // upper bound
+    yMin = (-camHeight + 3.5f) + spriteSize; // lower bound - y = -2
+    yMax = (camHeight - 1.55f) - spriteSize; // upper bound
 
     xMin = -camWidth + spriteSize; // left bound
     xMax = -spriteSize; // right bound 
@@ -312,21 +312,6 @@ public class PlayerScript : MonoBehaviour
 
   private void Die()
   {
-    // dead = true;
-    // if (explosion != null) Instantiate(explosion, transform.position, Quaternion.identity);
-    // health = maxHealth;
-    // transform.position = Vector2.zero;
-    // int oldScore = PlayerPrefs.GetInt("Score");
-    // int newScore = (int)gameTimer + score;
-    // if (newScore >= oldScore)
-    // {
-    //   PlayerPrefs.SetInt("Score", newScore);
-    // }
-    // if (newScoreText.text != null)
-    // {
-    //   newScoreText.text = "Sua Pontuação: " + newScore.ToString() + "\nPontuação Máxima: " + PlayerPrefs.GetInt("Score");
-    // }
-    // menu.SetActive(true);
     this.GetComponent<AudioSource>().Stop();
     Time.timeScale = 0;
     deathPanel.SetActive(true);

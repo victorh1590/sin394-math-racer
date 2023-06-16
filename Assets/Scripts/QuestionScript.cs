@@ -7,6 +7,7 @@ using TMPro;
 using System.Linq;
 using Newtonsoft.Json;
 using System;
+using UnityEngine.SceneManagement;
 
 public class QuestionScript : MonoBehaviour
 {
@@ -52,9 +53,19 @@ public class QuestionScript : MonoBehaviour
     // }
   }
 
+  private string StageQuestions()
+    => SceneManager.GetActiveScene().name switch
+    {
+      "Level" => "QUESTOESFASE1.json",
+      "Level2" => "QUESTOESFASE2.json",
+      "Level3" => "QUESTOESFASE3.json",
+      _ => "questions.json"
+    };
+
   void LoadPlayerPrefs()
   {
-    var path = Path.Combine(Application.streamingAssetsPath, "Resources", "questions.json");
+    string stage = StageQuestions();
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", stage);
     var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
     // Debug.Log(path);
     // Debug.Log(content);
