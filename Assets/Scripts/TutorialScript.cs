@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class TutorialScript : MonoBehaviour
     public GameObject wasdPanel;
     public GameObject espaco;
     public GameObject EspaçoA;
+    public GameObject VictoryPanel;
     public TextMeshProUGUI texto;
 
     private List<string> dialogo = new List<string>();
@@ -204,12 +206,28 @@ public class TutorialScript : MonoBehaviour
                 else if (indiceFala == 12)
                 {
                     espaco.SetActive(false);
-                    PScript.victoryPanel.SetActive(true);
-
+                    // PScript.victoryPanel.SetActive(true);
+                    PScript.enabled = true;
+                    enabled = true;
+                    Time.timeScale = 1;
+                    StopAllCoroutines();
+                    VictoryPanel.SetActive(true);
                 }
 
             }
         }
+    }
+
+    IEnumerator Level1()
+    {
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene("Level");
+    }
+
+    public void Fase1()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(Level1());
     }
 
     private void Falas()
