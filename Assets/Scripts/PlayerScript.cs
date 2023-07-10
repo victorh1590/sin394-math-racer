@@ -81,6 +81,7 @@ public class PlayerScript : MonoBehaviour
     {
       enabled = true;
     }
+
     fuelCoroutine = StartCoroutine(UpdateFuel());
     UpdateUI();
   }
@@ -99,13 +100,19 @@ public class PlayerScript : MonoBehaviour
       UpdateScore();
       Movement();
     }
+    if (!victoryPanel.activeSelf)
+    {
+        UpdateUI();
 
-    if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
+    }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && cena != "Tutorial")
     {
       PauseScreen();
 
     }
-  }
+
+    }
 
   private IEnumerator Cutscene()
   {
@@ -213,8 +220,9 @@ public class PlayerScript : MonoBehaviour
         seconds -= 60;
         minutes++;
       }
-      if (minutes >= 2)
+      if (minutes == 2)
       {
+        minutes = 0;
         Victory();
       }
     }
@@ -222,8 +230,8 @@ public class PlayerScript : MonoBehaviour
 
   private void Victory()
   {
+    Time.timeScale = 0; 
     victoryPanel.SetActive(true);
-    Time.timeScale = 0;
   }
 
   public IEnumerator UpdateFuel()
@@ -257,7 +265,6 @@ public class PlayerScript : MonoBehaviour
   private void UpdateUI()
   {
     lifeBar.fillAmount = health / 100;
-    Debug.Log(health);
     healthText.text = "" + health + "%";
     fuelBar.fillAmount = fuel / 100;
     fuelText.text = "" + fuel + "%";

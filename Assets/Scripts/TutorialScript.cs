@@ -210,8 +210,12 @@ public class TutorialScript : MonoBehaviour
                     PScript.enabled = true;
                     enabled = true;
                     Time.timeScale = 1;
-                    StopAllCoroutines();
                     VictoryPanel.SetActive(true);
+                    SceneManager.LoadScene("MenuSelect");
+
+                }else if (indiceFala >= 13)
+                {
+                    SceneManager.LoadScene("MenuSelect");
                 }
 
             }
