@@ -58,6 +58,18 @@ public class MenuScript : MonoBehaviour
     IEnumerator WaitReturnToMenu()
     {
         yield return new WaitForSeconds(.5f);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void LoadProfessorArea()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(WaitProfessorArea());
+    }
+
+    IEnumerator WaitProfessorArea()
+    {
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene("AreaProf");
     }
 }

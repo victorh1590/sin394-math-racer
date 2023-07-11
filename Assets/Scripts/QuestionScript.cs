@@ -41,6 +41,7 @@ public class QuestionScript : MonoBehaviour
     spawnScript = spawn.gameObject.GetComponent<SpawnScript>();
     playerScript = player.gameObject.GetComponent<PlayerScript>();
     LoadPlayerPrefs();
+    LoadCustomQuestions();
     DeserializeJsonFile();
   }
 
@@ -62,6 +63,8 @@ public class QuestionScript : MonoBehaviour
       _ => "questions.json"
     };
 
+  private string CustomQuestions => "CUSTOM_QUESTIONS.json";
+
   void LoadPlayerPrefs()
   {
     string stage = StageQuestions();
@@ -73,11 +76,38 @@ public class QuestionScript : MonoBehaviour
     PlayerPrefs.Save();
   }
 
+  void LoadCustomQuestions()
+  {
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", CustomQuestions);
+    if(File.Exists(path))
+    {
+      var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
+      // Debug.Log(path);
+      // Debug.Log(content);
+      PlayerPrefs.SetString("custom_questions", content);
+      PlayerPrefs.Save();
+    }
+    else
+    {
+      PlayerPrefs.SetString("custom_questions", string.Empty);
+      PlayerPrefs.Save();
+    }
+  }
+
   void DeserializeJsonFile()
   {
-    var json = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("original_questions"));
-    json = json.OrderBy(_ => Guid.NewGuid()).ToList();
-    questionStack = new Stack<Question>(json);
+    var baseQuestionsJson = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("original_questions"));
+    var customQuestionsJson = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("custom_questions"));
+    
+    baseQuestionsJson = baseQuestionsJson.OrderBy(_ => Guid.NewGuid()).ToList();
+    customQuestionsJson = customQuestionsJson.OrderBy(_ => Guid.NewGuid()).ToList();
+
+    var questionsTemp = new List<Question>(customQuestionsJson);
+    questionsTemp.AddRange(baseQuestionsJson);
+
+    questionsTemp = questionsTemp.Take(baseQuestionsJson.Count).ToList();
+
+    questionStack = new Stack<Question>(questionsTemp);
   }
 
   void AnswerChosen()
