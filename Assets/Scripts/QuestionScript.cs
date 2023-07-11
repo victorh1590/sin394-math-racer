@@ -106,7 +106,8 @@ public class QuestionScript : MonoBehaviour
     questionsTemp.AddRange(baseQuestionsJson);
 
     questionsTemp = questionsTemp.Take(baseQuestionsJson.Count).ToList();
-
+    questionsTemp = questionsTemp.OrderBy(_ => Guid.NewGuid()).ToList();
+    
     questionStack = new Stack<Question>(questionsTemp);
   }
 
