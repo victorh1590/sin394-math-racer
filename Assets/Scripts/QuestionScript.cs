@@ -63,7 +63,7 @@ public class QuestionScript : MonoBehaviour
       _ => "questions.json"
     };
 
-  private string CustomQuestions => "CUSTOM_QUESTIONS.json";
+  private string customQuestions = "CUSTOM_QUESTIONS.json";
 
   void LoadPlayerPrefs()
   {
@@ -78,17 +78,18 @@ public class QuestionScript : MonoBehaviour
 
   void LoadCustomQuestions()
   {
-    var path = Path.Combine(Application.streamingAssetsPath, "Resources", CustomQuestions);
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", customQuestions);
     if(File.Exists(path))
     {
       var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
-      // Debug.Log(path);
-      // Debug.Log(content);
+      Debug.Log(path);
+      Debug.Log(content);
       PlayerPrefs.SetString("custom_questions", content);
       PlayerPrefs.Save();
     }
     else
     {
+      Debug.Log(path);
       PlayerPrefs.SetString("custom_questions", string.Empty);
       PlayerPrefs.Save();
     }
@@ -99,6 +100,8 @@ public class QuestionScript : MonoBehaviour
     var baseQuestionsJson = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("original_questions"));
     var customQuestionsJson = JsonConvert.DeserializeObject<List<Question>>(PlayerPrefs.GetString("custom_questions"));
     
+    customQuestionsJson ??= new List<Question>();
+
     baseQuestionsJson = baseQuestionsJson.OrderBy(_ => Guid.NewGuid()).ToList();
     customQuestionsJson = customQuestionsJson.OrderBy(_ => Guid.NewGuid()).ToList();
 
@@ -106,8 +109,9 @@ public class QuestionScript : MonoBehaviour
     questionsTemp.AddRange(baseQuestionsJson);
 
     questionsTemp = questionsTemp.Take(baseQuestionsJson.Count).ToList();
+    questionsTemp.Reverse();
     questionsTemp = questionsTemp.OrderBy(_ => Guid.NewGuid()).ToList();
-    
+
     questionStack = new Stack<Question>(questionsTemp);
   }
 

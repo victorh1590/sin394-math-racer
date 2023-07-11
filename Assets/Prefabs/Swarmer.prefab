@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObstacleList:
-  - {fileID: 8768439520773041881, guid: 22d727bdfe7bc6f40a0cce504567aebc, type: 3}
-  - {fileID: 8768439520773041881, guid: c8b061b24401be143966b69dd18818cb, type: 3}
-  - {fileID: 8768439520773041881, guid: ec4d91978beac314299a5966bf821230, type: 3}
+  - {fileID: 8768439520773041881, guid: 601e15a5183cee846b5c1276186cef3a, type: 3}
+  - {fileID: 8768439520773041881, guid: df199039f7976cc468a0c62ca23374df, type: 3}
+  - {fileID: 8768439520773041881, guid: 934f5dcfadf944a4eb7fcd9196fe8f69, type: 3}
   ItemList:
   - {fileID: 1842553810636962044, guid: 415ba55486f58d645bc8150b91633b1d, type: 3}
   - {fileID: 4354533951327025506, guid: 64751ce8d504c7a42a4f8081c2a08ec0, type: 3}
