@@ -1,0 +1,486 @@
+[
+  {
+    "Statement": "Dada um cubo e sua aresta vale 15cm, seu volume é?",
+    "Answers": [
+      "3.333",
+      "3.375",
+      "1.500",
+      "15.000"
+    ],
+    "CorrectAnswer": "3.375",
+    "Tip": "Volume de um cubo = aresta^3"
+  },
+  {
+    "Statement": "Dada um cubo e sua aresta vale 100cm, seu volume é?",
+    "Answers": [
+      "100.000",
+      "3.000.000",
+      "15.000",
+      "1.000.000"
+    ],
+    "CorrectAnswer": "1.000.000",
+    "Tip": "Volume de um cubo = aresta^3"
+  },
+  {
+    "Statement": "Dada um cubo e sua aresta vale 10cm, seu volume é?",
+    "Answers": [
+      "1.000",
+      "100",
+      "1.500",
+      "100.000"
+    ],
+    "CorrectAnswer": "1.000",
+    "Tip": "Volume de um cubo = aresta^3"
+  },
+  {
+    "Statement": "Dada um cubo e sua aresta vale 5cm, seu volume é?",
+    "Answers": [
+      "124",
+      "125",
+      "0",
+      "15"
+    ],
+    "CorrectAnswer": "125",
+    "Tip": "Volume de um cubo = aresta^3"
+  },
+  {
+    "Statement": "Dada um cubo e sua aresta vale 20cm, seu volume é?",
+    "Answers": [
+      "8.000",
+      "8.500",
+      "850",
+      "7.999"
+    ],
+    "CorrectAnswer": "8.000",
+    "Tip": "Volume de um cubo = aresta^3"
+  },
+  {
+    "Statement": "A seguinte expressão: 6*6*6*6, equivale a:",
+    "Answers": [
+      "6^3",
+      "6^2",
+      "6*6+6*6",
+      "6^4"
+    ],
+    "CorrectAnswer": "6^4",
+    "Tip": "Propriedades de potência"
+  },
+  {
+    "Statement": "A seguinte expressão: (7*7*7*7)*5, equivale a:",
+    "Answers": [
+      "(7^5)*4",
+      "(7^3)*5",
+      "(7^4)*5",
+      "(7+7^4)+5"
+    ],
+    "CorrectAnswer": "(7^4)*5",
+    "Tip": "Propriedades de potência"
+  },
+  {
+    "Statement": "A seguinte expressão: 5*5*5*5, equivale a:",
+    "Answers": [
+      "5^3",
+      "5^4",
+      "5+5*5*5",
+      "5^2"
+    ],
+    "CorrectAnswer": "5^4",
+    "Tip": "Propriedades de potência"
+  },
+  {
+    "Statement": "A seguinte expressão: (8*8)*8, equivale a:",
+    "Answers": [
+      "(8^2)+8",
+      "(8^3)+8",
+      "8^4",
+      "8^3"
+    ],
+    "CorrectAnswer": "8^3",
+    "Tip": "Propriedades de potência"
+  },
+  {
+    "Statement": "A seguinte expressão: 6*6*6, equivale a:",
+    "Answers": [
+      "(6^2)*7",
+      "(6^2)*6",
+      "(6^2)+6",
+      "6^4"
+    ],
+    "CorrectAnswer": "(6^2)*6",
+    "Tip": "Propriedades de potência"
+  },
+  {
+    "Statement": "Calcule o valor da expressão: 2^3 * 2^5.",
+    "Answers": [
+      "2^8",
+      "2^15",
+      "2^24",
+      "2^40"
+    ],
+    "CorrectAnswer": "2^8",
+    "Tip": "Na multiplicação de potências de mesma base, somam-se os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão: (5^2)^4.",
+    "Answers": [
+      "5^8",
+      "5^16",
+      "5^24",
+      "5^32"
+    ],
+    "CorrectAnswer": "5^8",
+    "Tip": "Na potência de uma potência, multiplica-se os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão: (10^3)^2.",
+    "Answers": [
+      "10^6",
+      "10^9",
+      "10^12",
+      "10^15"
+    ],
+    "CorrectAnswer": "10^6",
+    "Tip": "Na potência de uma potência, multiplica-se os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão: 3^4 / 3^2.",
+    "Answers": [
+      "3^2",
+      "3^6",
+      "3^8",
+      "3^16"
+    ],
+    "CorrectAnswer": "3^2",
+    "Tip": "Na divisão de potências de mesma base, subtraem-se os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão: (6^3) / (6^4).",
+    "Answers": [
+      "1/6",
+      "6",
+      "6^7",
+      "6^12"
+    ],
+    "CorrectAnswer": "1/6",
+    "Tip": "Na divisão de potências de mesma base, subtraem-se os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (2^3) * (2^4):",
+    "Answers": [
+      "2^7",
+      "2^12",
+      "2^6",
+      "2^24"
+    ],
+    "CorrectAnswer": "2^7",
+    "Tip": "Para multiplicar potências com a mesma base, mantenha a base e some os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (5^6) * (5^3):",
+    "Answers": [
+      "5^9",
+      "5^18",
+      "5^2",
+      "5^24"
+    ],
+    "CorrectAnswer": "5^9",
+    "Tip": "Para multiplicar potências com a mesma base, mantenha a base e some os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (10^5) * (10^2):",
+    "Answers": [
+      "10^7",
+      "10^15",
+      "10^3",
+      "10^10"
+    ],
+    "CorrectAnswer": "10^7",
+    "Tip": "Para multiplicar potências com a mesma base, mantenha a base e some os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (3^2) / (3^4):",
+    "Answers": [
+      "3^-2",
+      "3^6",
+      "3^-8",
+      "3^2"
+    ],
+    "CorrectAnswer": "3^-2",
+    "Tip": "Para dividir potências com a mesma base, mantenha a base e subtraia os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (8^5) / (8^2):",
+    "Answers": [
+      "8^3",
+      "8^10",
+      "8^-3",
+      "8^7"
+    ],
+    "CorrectAnswer": "8^3",
+    "Tip": "Para dividir potências com a mesma base, mantenha a base e subtraia os expoentes."
+  },
+  {
+    "Statement": "Calcule o valor da expressão (2^8) / (2^6):",
+    "Answers": [
+      "2^2",
+      "2^14",
+      "2^-2",
+      "2^48"
+    ],
+    "CorrectAnswer": "2^2",
+    "Tip": "Para dividir potências com a mesma base, mantenha a base e subtraia os expoentes."
+  },
+  {
+    "Statement": "Se x^3 = 64, qual é o valor de x?",
+    "Answers": [
+      "4",
+      "8",
+      "16",
+      "64"
+    ],
+    "CorrectAnswer": "4",
+    "Tip": "Para encontrar o valor de x, procure a raiz cúbica do número."
+  },
+  {
+    "Statement": "Se y^4 = 81, qual é o valor de y?",
+    "Answers": [
+      "3",
+      "9",
+      "27",
+      "81"
+    ],
+    "CorrectAnswer": "3",
+    "Tip": "Para encontrar o valor de y, procure a raiz quarta do número."
+  },
+  {
+    "Statement": "Se x^2 = 25, qual é o valor de x?",
+    "Answers": [
+      "5",
+      "10",
+      "15",
+      "25"
+    ],
+    "CorrectAnswer": "5",
+    "Tip": "Para encontrar o valor de x, procure a raiz quadrada do número."
+  },
+  {
+    "Statement": "Se y^3 = 216, qual é o valor de y?",
+    "Answers": [
+      "6",
+      "9",
+      "12",
+      "18"
+    ],
+    "CorrectAnswer": "6",
+    "Tip": "Para encontrar o valor de y, procure a raiz cúbica do número."
+  },
+  {
+    "Statement": "Se x^5 = 1024, qual é o valor de x?",
+    "Answers": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "CorrectAnswer": "2",
+    "Tip": "Para encontrar o valor de x, procure a raiz quinta do número."
+  },
+  {
+    "Statement": "Se y^2 = 144, qual é o valor de y?",
+    "Answers": [
+      "12",
+      "24",
+      "36",
+      "48"
+    ],
+    "CorrectAnswer": "12",
+    "Tip": "Para encontrar o valor de y, procure a raiz quadrada do número."
+  },
+  {
+    "Statement": "Dado um cubo com aresta de comprimento 7 cm, qual é o seu volume?",
+    "Answers": [
+      "343 cm³",
+      "49 cm³",
+      "98 cm³",
+      "147 cm³"
+    ],
+    "CorrectAnswer": "343 cm³",
+    "Tip": "O volume de um cubo é calculado elevando-se a aresta ao cubo."
+  },
+  {
+    "Statement": "Dado um cubo com aresta de comprimento 4 cm, qual é o seu volume?",
+    "Answers": [
+      "64 cm³",
+      "16 cm³",
+      "32 cm³",
+      "8 cm³"
+    ],
+    "CorrectAnswer": "64 cm³",
+    "Tip": "O volume de um cubo é calculado elevando-se a aresta ao cubo."
+  },
+  {
+    "Statement": "Dado um cubo com aresta de comprimento 9 cm, qual é o seu volume?",
+    "Answers": [
+      "729 cm³",
+      "81 cm³",
+      "243 cm³",
+      "324 cm³"
+    ],
+    "CorrectAnswer": "729 cm³",
+    "Tip": "O volume de um cubo é calculado elevando-se a aresta ao cubo."
+  },
+  {
+    "Statement": "Dado um cubo com aresta de comprimento 5 cm, qual é o seu volume?",
+    "Answers": [
+      "125 cm³",
+      "25 cm³",
+      "50 cm³",
+      "75 cm³"
+    ],
+    "CorrectAnswer": "125 cm³",
+    "Tip": "O volume de um cubo é calculado elevando-se a aresta ao cubo."
+  },
+  {
+    "Statement": "Dado um cubo com aresta de comprimento 6 cm, qual é o seu volume?",
+    "Answers": [
+      "216 cm³",
+      "36 cm³",
+      "72 cm³",
+      "144 cm³"
+    ],
+    "CorrectAnswer": "216 cm³",
+    "Tip": "O volume de um cubo é calculado elevando-se a aresta ao cubo."
+  },
+  {
+    "Statement": "Desenvolva o binômio (x + 3)².",
+    "Answers": [
+      "x² + 6x + 9",
+      "x² + 9x + 6",
+      "x² + 3x + 9",
+      "x² + 9x + 3"
+    ],
+    "CorrectAnswer": "x² + 6x + 9",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (2x - 5)².",
+    "Answers": [
+      "4x² - 20x + 25",
+      "4x² - 25x + 20",
+      "4x² - 10x + 25",
+      "4x² - 25x + 10"
+    ],
+    "CorrectAnswer": "4x² - 20x + 25",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (3y - 2)².",
+    "Answers": [
+      "9y² - 12y + 4",
+      "9y² + 12y + 4",
+      "9y² - 4y + 12",
+      "9y² + 4y - 12"
+    ],
+    "CorrectAnswer": "9y² - 12y + 4",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (4a + 7)².",
+    "Answers": [
+      "16a² + 56a + 49",
+      "16a² - 56a + 49",
+      "16a² + 49a + 56",
+      "16a² - 49a + 56"
+    ],
+    "CorrectAnswer": "16a² + 56a + 49",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (2x + 3y)².",
+    "Answers": [
+      "4x² + 12xy + 9y²",
+      "4x² - 12xy + 9y²",
+      "4x² + 9xy + 12y²",
+      "4x² - 9xy + 12y²"
+    ],
+    "CorrectAnswer": "4x² + 12xy + 9y²",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (5a - 2b)².",
+    "Answers": [
+      "25a² - 20ab + 4b²",
+      "25a² + 20ab + 4b²",
+      "25a² - 4ab + 20b²",
+      "25a² + 4ab - 20b²"
+    ],
+    "CorrectAnswer": "25a² - 20ab + 4b²",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (x + 2)².",
+    "Answers": [
+      "x² + 4x + 4",
+      "x² + 2x + 4",
+      "x² + 2x + 2",
+      "x² + 4x + 2"
+    ],
+    "CorrectAnswer": "x² + 4x + 4",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (2y - 3)².",
+    "Answers": [
+      "4y² - 12y + 9",
+      "4y² - 6y + 9",
+      "4y² - 6y + 3",
+      "4y² - 12y + 3"
+    ],
+    "CorrectAnswer": "4y² - 12y + 9",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (3a - 5)².",
+    "Answers": [
+      "9a² - 30a + 25",
+      "9a² - 15a + 25",
+      "9a² - 15a + 9",
+      "9a² - 30a + 9"
+    ],
+    "CorrectAnswer": "9a² - 30a + 25",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (4x + 1)².",
+    "Answers": [
+      "16x² + 8x + 1",
+      "16x² + 4x + 1",
+      "16x² + 4x + 4",
+      "16x² + 8x + 4"
+    ],
+    "CorrectAnswer": "16x² + 8x + 1",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (2y + 6)².",
+    "Answers": [
+      "4y² + 24y + 36",
+      "4y² + 12y + 36",
+      "4y² + 12y + 12",
+      "4y² + 24y + 12"
+    ],
+    "CorrectAnswer": "4y² + 24y + 36",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  },
+  {
+    "Statement": "Desenvolva o binômio (5a - 2)².",
+    "Answers": [
+      "25a² - 20a + 4",
+      "25a² - 10a + 4",
+      "25a² - 10a + 10",
+      "25a² - 20a + 10"
+    ],
+    "CorrectAnswer": "25a² - 20a + 4",
+    "Tip": "Para desenvolver um binômio ao quadrado, utilize a fórmula: (a + b)² = a² + 2ab + b²."
+  }
+]

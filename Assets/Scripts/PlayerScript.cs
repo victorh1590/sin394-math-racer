@@ -200,8 +200,10 @@ public class PlayerScript : MonoBehaviour
     var ver = Input.GetAxisRaw("Vertical");
     var hor = Input.GetAxisRaw("Horizontal");
 
-    // Calculate movement direction
-    var direction = new Vector2(hor, ver).normalized;
+    Vector2 move = Application.isMobilePlatform ? InputHandle.joystickAxis : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        // Calculate movement direction
+        var direction = move;/* new Vector2(hor, ver).normalized; */
     direction *= speed * Time.deltaTime; // apply speed
 
     var xValidPosition = Mathf.Clamp(transform.position.x + direction.x, xMin, xMax);
