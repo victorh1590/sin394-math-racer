@@ -458,7 +458,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1082626162153925491}
-  buttons: []
+  buttons:
+  - {fileID: 2855433539340150744}
+  - {fileID: 2855433538090126083}
+  - {fileID: 2855433538843926623}
 --- !u!1 &2855433539409981289
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -978,3 +981,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4670878377090381054, guid: d71da846f7aa23443aa49ffa50ae211c, type: 3}
   m_PrefabInstance: {fileID: 7454234248788923178}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2855433539340150744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4670878377090381042, guid: d71da846f7aa23443aa49ffa50ae211c, type: 3}
+  m_PrefabInstance: {fileID: 7454234248788923178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

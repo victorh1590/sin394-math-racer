@@ -332,7 +332,7 @@ public class PlayerScript : MonoBehaviour
     if (timeSinceLastScoreUpdate >= 10f)
     {
       AddScore(10);
-      timeSinceLastScoreUpdate = 0f;
-    }
-  }
+      timeSinceLastScoreUpdate = 0f;
+    }
+  }
 }
