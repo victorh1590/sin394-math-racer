@@ -67,29 +67,80 @@ public class QuestionScript : MonoBehaviour
 
   void LoadPlayerPrefs()
   {
+    if(Application.isMobilePlatform)
+    {
+      LoadPlayerPrefsMobile();
+    }
+    else
+    {
+      LoadPlayerPrefsPC();
+    }
+  }
+
+  void LoadPlayerPrefsPC()
+  {
     string stage = StageQuestions();
     var path = Path.Combine(Application.streamingAssetsPath, "Resources", stage);
     var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
-    // Debug.Log(path);
-    // Debug.Log(content);
+    PlayerPrefs.SetString("original_questions", content);
+    PlayerPrefs.Save();
+  }
+
+  void LoadPlayerPrefsMobile()
+  {
+    string stage = StageQuestions();
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", stage);
+    UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(path);
+    www.SendWebRequest();
+    while (!www.isDone) { }
+    var content = www.downloadHandler.text;
     PlayerPrefs.SetString("original_questions", content);
     PlayerPrefs.Save();
   }
 
   void LoadCustomQuestions()
   {
+    if(Application.isMobilePlatform)
+    {
+      LoadCustomQuestionsAndroid();
+    }
+    else
+    {
+      LoadCustomQuestionsPC();
+    }
+  }
+
+
+  void LoadCustomQuestionsPC()
+  {
     var path = Path.Combine(Application.streamingAssetsPath, "Resources", customQuestions);
     if(File.Exists(path))
     {
       var content = File.ReadAllText(path, System.Text.Encoding.UTF8);
-      Debug.Log(path);
-      Debug.Log(content);
       PlayerPrefs.SetString("custom_questions", content);
       PlayerPrefs.Save();
     }
     else
     {
-      Debug.Log(path);
+      PlayerPrefs.SetString("custom_questions", string.Empty);
+      PlayerPrefs.Save();
+    }
+  }
+
+  void LoadCustomQuestionsAndroid()
+  {
+    var path = Path.Combine(Application.streamingAssetsPath, "Resources", customQuestions);
+    if(File.Exists(path))
+    {
+      UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(path);
+      www.SendWebRequest();
+      while (!www.isDone) { }
+      var content = www.downloadHandler.text;
+      PlayerPrefs.SetString("custom_questions", content);
+      PlayerPrefs.Save();
+    }
+    else
+    {
       PlayerPrefs.SetString("custom_questions", string.Empty);
       PlayerPrefs.Save();
     }
@@ -138,12 +189,10 @@ public class QuestionScript : MonoBehaviour
     {
       chosenAnswer = null;
     }
-    // Debug.Log(chosenAnswer);
   }
 
   void SelectQuestion()
   {
-    // questionCount--;
     if (questionStack.Count <= 0) throw new Exception("Question stack is empty.");
     currentQuestion = questionStack.Pop();
     currentQuestion.Answers = currentQuestion.Answers.OrderBy(_ => Guid.NewGuid()).ToList();

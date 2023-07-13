@@ -76,4 +76,7 @@ crashlytics-build.properties
 
 #EXE
 /EXE
+/EXE-Windows
+/EXE-Linux
+/APK-Android
 *.rar
